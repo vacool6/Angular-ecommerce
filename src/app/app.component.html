@@ -1,6 +1,25 @@
-<nav class="navbar">
-  <a class="navLink" routerLink="/">Home</a>
-  <a class="navLink" routerLink="/search">Search page</a>
-  <a class="navLink" routerLink="/product-details">Product details page</a>
-</nav>
-<router-outlet></router-outlet>
+<section class="auth"><a>Sign In</a> / <a>Create account</a></section>
+<hr />
+<section class="header">
+  <nav class="navbar">
+    <a class="navLink" routerLink="/">Collections</a>
+    <a class="navLink" routerLink="/">Men</a>
+    <a class="navLink" routerLink="/">Women</a>
+    <a class="navLink" routerLink="/">Kids</a>
+  </nav>
+  <h1 routerLink="/">LEVIS <sup>PoC</sup></h1>
+  <div class="search-section">
+    <input
+      placeholder="Tell us what's on your mind"
+      [(ngModel)]="searchValue"
+    />
+    <button (click)="onSearch()">Search</button>
+    <a>CART🛒</a>
+  </div>
+</section>
+
+<section class="main-content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer class="footer">Footer</footer>

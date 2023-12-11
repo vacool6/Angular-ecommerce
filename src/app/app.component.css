@@ -1,16 +1,84 @@
+.auth {
+  padding: 0.75rem;
+  text-align: end;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 4rem;
+  padding: 0 1rem;
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 16px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
+  width: 40%;
+}
+
+.search-section {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-section input {
+  border: 0;
+  border-bottom: 2px solid rgb(185, 184, 184);
+  padding: 0.5rem;
+  outline: none;
+  font-size: 16px;
+  color: rgb(33, 101, 97);
+  width: 65%;
+}
+
+.search-section button {
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 1.5rem;
+}
+
+.search-section button:active {
+  transform: scale(0.8);
+}
+
+.header input::placeholder {
+  font-size: 16px;
+  color: rgb(33, 101, 97);
 }
 
 .navLink {
   text-decoration: none;
-  color: black;
-  font-size: 1.5rem;
+  color: rgb(33, 101, 97);
+  font-size: 1.25rem;
 }
 
 .navLink:hover,
 .navLinkActive {
   color: rgb(4, 90, 161);
   text-decoration: underline;
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+.footer {
+  background-color: rgb(116, 117, 117);
+  text-align: center;
+  padding: 2rem;
 }

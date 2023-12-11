@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,4 +8,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'levis_POC';
+  searchValue = '';
+
+  constructor(private readonly router: Router) {}
+
+  onSearch() {
+    if (this.searchValue) {
+      this.router.navigate([`/search`], {
+        queryParams: { q: this.searchValue },
+      });
+    } else {
+      return;
+    }
+  }
 }
