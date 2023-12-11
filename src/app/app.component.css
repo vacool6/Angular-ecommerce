@@ -2,6 +2,11 @@
   padding: 0.75rem;
   text-align: end;
 }
+
+.auth a {
+  cursor: pointer;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,8 +16,8 @@
   top: 0;
   background-color: white;
   height: 4rem;
-  padding: 0 1rem;
-  margin-bottom: 4rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .header h1 {
@@ -45,15 +50,15 @@
 
 .search-section button {
   border: none;
-  background-color: blue;
+  background-color: purple;
   color: white;
   border-radius: 0.5rem;
   cursor: pointer;
-  height: 1.5rem;
+  height: 2rem;
 }
 
 .search-section button:active {
-  transform: scale(0.8);
+  transform: scale(0.95);
 }
 
 .header input::placeholder {
@@ -78,7 +83,48 @@
 }
 
 .footer {
-  background-color: rgb(116, 117, 117);
+  background-color: rgb(109, 109, 109);
   text-align: center;
   padding: 2rem;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+@keyframes highlight {
+  0% {
+    transform: skew(0deg, 0deg);
+  }
+  15% {
+    transform: skew(1deg, 1deg);
+  }
+  30% {
+    transform: skew(2deg, 2deg);
+  }
+  45% {
+    transform: skew(1deg, 1deg);
+  }
+  60% {
+    transform: skew(0deg, 0deg);
+  }
+  75% {
+    transform: skew(-1deg, -1deg);
+  }
+  75% {
+    transform: skew(-2deg, -2deg);
+  }
+  90% {
+    transform: skew(-1deg, -1deg);
+  }
+  100% {
+    transform: skew(0deg, 0deg);
+  }
+}
+
+.logo {
+  background-color: purple;
+  color: white;
+  padding: 1rem;
+  animation: highlight 1s infinite;
+  border-radius: 1rem;
 }

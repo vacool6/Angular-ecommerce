@@ -1,13 +1,15 @@
-<h1 class="home-header">{{ title }}</h1>
-
-<br />
-<section class="container">
-  <div
-    class="container-item"
-    *ngFor="let item of data; let i = index"
-    id="{{ i }}"
-  >
-    <img src="{{ item.image }}" alt="{{ item.name }}" height="350" />
-    <p>{{ item.name }}</p>
+<section class="product-promotion-card">
+  <h1 class="home-header">{{ title }}</h1>
+  <br />
+  <div class="container">
+    <div
+      class="container-item"
+      *ngFor="let item of data; let i = index"
+      id="{{ i }}"
+    >
+      <img src="{{ item.image }}" alt="{{ item.name }}" height="350" />
+      <p>{{ item.name }}</p>
+      <button class="add-to-cart-btn">Add To Cart</button>
+    </div>
   </div>
 </section>

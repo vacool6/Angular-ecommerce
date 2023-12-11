@@ -19,12 +19,13 @@ const appRouter: Routes = [
     path: 'product-details',
     component: ProductDetailsPageComponent,
   },
+
   {
     path: 'not-found',
     component: NotFoundComponent,
   },
   {
-    path: '**',
+    path: '*',
     redirectTo: 'not-found',
   },
 ];

@@ -1,5 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from './services/authService';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent {
   title = 'levis_POC';
   searchValue = '';
+  isLoginModalOpen: boolean = false;
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngDoCheck(): void {
+    this.isLoginModalOpen = this.authService.isLoginModalOpen;
+  }
 
   onSearch() {
     if (this.searchValue) {
@@ -20,5 +29,9 @@ export class AppComponent {
     } else {
       return;
     }
+  }
+
+  openLoginModal() {
+    return this.authService.openLoginModal();
   }
 }
