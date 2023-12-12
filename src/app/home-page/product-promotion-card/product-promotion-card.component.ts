@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/productsService';
+import { CartService } from 'src/app/services/cartService';
 
 @Component({
   selector: 'app-product-promotion-card',
@@ -8,11 +8,17 @@ import { ProductsService } from 'src/app/services/productsService';
 })
 export class ProductPromotionCardComponent {
   @Input() title: string = '';
-  @Input() data: { name: string; image: string }[] = [];
+  @Input() data: any[] = [];
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
-  // ngOnInit(): void {
-  //   this.title = this.title;
-  // }
+  addToCart(id: string) {
+    const item = this.data.filter((item) => item.id === id)[0];
+
+    for (let i of this.cartService.cartItems) {
+      if (i.id === item.id) return alert('Item already added to cart 😄');
+    }
+
+    return this.cartService.addItemToCart(item);
+  }
 }

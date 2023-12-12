@@ -1,6 +1,7 @@
 import { Component, OnChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from './services/authService';
+import { CartService } from './services/cartService';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,17 @@ export class AppComponent {
   title = 'levis_POC';
   searchValue = '';
   isLoginModalOpen: boolean = false;
+  cartLength: number = 0;
 
   constructor(
     private readonly router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
   ) {}
 
   ngDoCheck(): void {
     this.isLoginModalOpen = this.authService.isLoginModalOpen;
+    this.cartLength = this.cartService.cartItems.length;
   }
 
   onSearch() {

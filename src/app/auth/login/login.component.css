@@ -31,16 +31,17 @@
 .login-form {
   background-color: white;
   border-radius: 10px;
-  width: 16rem;
+  width: 18rem;
   padding: 1rem;
 }
 
 .login-form input {
-  height: 2rem;
+  height: 3rem;
   width: 90%;
   border-radius: 10px;
   border: 1px solid black;
   padding-left: 1rem;
+  margin: 1rem 0;
 }
 
 .login-btn {

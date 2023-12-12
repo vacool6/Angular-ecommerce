@@ -9,7 +9,9 @@
     >
       <img src="{{ item.image }}" alt="{{ item.name }}" height="350" />
       <p>{{ item.name }}</p>
-      <button class="add-to-cart-btn">Add To Cart</button>
+      <button class="add-to-cart-btn" (click)="addToCart(item.id)">
+        Add To Cart
+      </button>
     </div>
   </div>
 </section>

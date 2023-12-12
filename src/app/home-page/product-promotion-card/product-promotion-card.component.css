@@ -10,12 +10,22 @@
 }
 
 .container-item {
-  width: 20rem;
+  width: 15rem;
   height: 30rem;
   margin: 1rem;
   padding: 0.5rem;
   border: 1px solid gray;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.container-item:hover {
+  box-shadow: 4px 4px 6px black;
+  transform: scale(1.01);
 }
 
 .container-item img {

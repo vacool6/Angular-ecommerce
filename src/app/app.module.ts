@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsService } from './services/productsService';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/authService';
+import { CartService } from './services/cartService';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AuthService } from './services/authService';
     LoginComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule],
-  providers: [ProductsService, AuthService],
+  providers: [ProductsService, AuthService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -7,8 +7,8 @@ import { ProductsService } from '../services/productsService';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent {
-  top: { name: string; image: string }[] = [];
-  newReleases: { name: string; image: string }[] = [];
+  top: any[] = [];
+  newReleases: any[] = [];
 
   constructor(private productsService: ProductsService) {}
 

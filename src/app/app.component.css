@@ -14,6 +14,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 2;
   background-color: white;
   height: 4rem;
   padding: 1rem;
@@ -34,7 +35,6 @@
 .search-section {
   width: 40%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -55,6 +55,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   height: 2rem;
+  margin: 0 1rem;
 }
 
 .search-section button:active {
@@ -89,6 +90,27 @@
   color: white;
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.cart-link {
+  position: relative;
+}
+.cart-none {
+  display: none;
+}
+.cart-count {
+  position: absolute;
+  left: 2.75rem;
+  bottom: 1rem;
+  background-color: green;
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0.3rem;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
 }
 
 @keyframes highlight {

@@ -13,14 +13,23 @@
     <a class="navLink" routerLink="/">Women</a>
     <a class="navLink" routerLink="/">Kids</a>
   </nav>
-  <h1 routerLink="/" class="logo">LEVIS <sup>PoC</sup></h1>
+  <h1 routerLink="/" class="logo">LEVIS <sup>PoC &reg;</sup></h1>
   <div class="search-section">
     <input
       placeholder="Tell us what's on your mind"
       [(ngModel)]="searchValue"
     />
     <button (click)="onSearch()">Search</button>
-    <a>CART🛒</a>
+    <a class="cart-link">
+      <span>CART🛒</span>
+      <span
+        [ngClass]="{
+          'cart-count': cartLength > 0,
+          'cart-none': cartLength <= 0
+        }"
+        >{{ cartLength }}</span
+      >
+    </a>
   </div>
 </section>
 
@@ -29,5 +38,5 @@
 </section>
 
 <footer class="footer">
-  © 2023 - 2024 LEVIS <sup>PoC</sup> Code like music ^_-
+  © 2023 - 2024 LEVIS <sup>PoC &reg;</sup> Code like music ^_-
 </footer>

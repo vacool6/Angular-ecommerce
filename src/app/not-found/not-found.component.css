@@ -1,0 +1,15 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found-container p:nth-of-type(1) {
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 1rem 0;
+}
+
+.not-found-container img {
+  /* width: 100%; */
+}

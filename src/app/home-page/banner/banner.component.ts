@@ -9,8 +9,4 @@ export class BannerComponent {
   @Input() imgSource: string = '';
 
   constructor() {}
-
-  ngOnInit(): void {
-    this.imgSource = this.imgSource;
-  }
 }
