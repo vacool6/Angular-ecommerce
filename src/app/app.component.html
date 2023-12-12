@@ -21,13 +21,13 @@
     />
     <button (click)="onSearch()">Search</button>
     <a class="cart-link">
-      <span>CART🛒</span>
       <span
-        [ngClass]="{
-          'cart-count': cartLength > 0,
-          'cart-none': cartLength <= 0
-        }"
-        >{{ cartLength }}</span
+        >🛒
+        <span
+          class="cart-count"
+          [ngStyle]="{ backgroundColor: cartLength > 0 ? 'green' : 'grey' }"
+          >{{ cartLength }}</span
+        ></span
       >
     </a>
   </div>

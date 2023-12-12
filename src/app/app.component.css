@@ -14,7 +14,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 1;
   background-color: white;
   height: 4rem;
   padding: 1rem;
@@ -94,23 +94,16 @@
 
 .cart-link {
   position: relative;
+  font-size: 14px;
+}
+
+.cart-count {
+  color: white;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
 }
 .cart-none {
   display: none;
-}
-.cart-count {
-  position: absolute;
-  left: 2.75rem;
-  bottom: 1rem;
-  background-color: green;
-  border-radius: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
-  padding: 0.3rem;
-  text-align: center;
-  color: white;
-  font-size: 10px;
-  font-weight: 600;
 }
 
 @keyframes highlight {
