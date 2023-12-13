@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/productsService';
+import { CartService } from '../services/cartService';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,10 @@ export class HomePageComponent {
   top: any[] = [];
   newReleases: any[] = [];
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.top = this.productsService.top;

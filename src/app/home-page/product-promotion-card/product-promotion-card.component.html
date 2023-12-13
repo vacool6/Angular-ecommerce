@@ -7,9 +7,20 @@
       *ngFor="let item of data; let i = index"
       id="{{ i }}"
     >
+      <span
+        class="info-text"
+        [ngStyle]="{
+          display: itemsIdInCart.includes(item.id) ? 'block' : 'none'
+        }"
+        >Item Added To Cart</span
+      >
       <img src="{{ item.image }}" alt="{{ item.name }}" height="350" />
       <p>{{ item.name }}</p>
-      <button class="add-to-cart-btn" (click)="addToCart(item.id)">
+      <button
+        class="add-to-cart-btn"
+        (click)="addToCart(item.id)"
+        [disabled]="itemsIdInCart.includes(item.id)"
+      >
         Add To Cart
       </button>
     </div>

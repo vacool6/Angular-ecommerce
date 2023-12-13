@@ -7,10 +7,19 @@ import { CartService } from 'src/app/services/cartService';
   styleUrls: ['./product-promotion-card.component.css'],
 })
 export class ProductPromotionCardComponent {
+  itemsIdInCart: any[] = [];
+
   @Input() title: string = '';
   @Input() data: any[] = [];
 
   constructor(private cartService: CartService) {}
+
+  ngDoCheck() {
+    for (let item of this.cartService.cartItems) {
+      if (!this.itemsIdInCart.includes(item.id))
+        this.itemsIdInCart.push(item.id);
+    }
+  }
 
   addToCart(id: string) {
     const item = this.data.filter((item) => item.id === id)[0];
@@ -19,6 +28,6 @@ export class ProductPromotionCardComponent {
       if (i.id === item.id) return alert('Item already added to cart 😄');
     }
 
-    return this.cartService.addItemToCart(item);
+    return this.cartService.addItemToCart({ ...item, isAddedToCart: true });
   }
 }
