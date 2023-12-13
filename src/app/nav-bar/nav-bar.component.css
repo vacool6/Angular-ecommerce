@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+}
+
+.navItem:hover {
+  color: purple;
+}
+
+.navItem {
+  margin: 0 10px;
+  position: relative;
+  cursor: pointer;
+  font-size: large;
+}
+
+.dropdown-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -417px;
+  background-color: white;
+  border: 1px solid transparent;
+  width: calc(100% + 10000px);
+  box-sizing: border-box;
+  border-top: white;
+  text-align: left;
+}
+
+.dropdown-container a {
+  display: block;
+  padding: 10px;
+  text-decoration: underline;
+  color: black;
+  transition: background-color 0.3s;
+  margin-right: 20px;
+  margin-left: 400px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.dropdown-container a:hover {
+  color: silver;
+}
+
+.navItem:hover .dropdown-container {
+  display: block;
+  border-color: silver;
+}

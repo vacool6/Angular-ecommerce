@@ -17,6 +17,7 @@ import { ProductsService } from './services/productsService';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/authService';
 import { CartService } from './services/cartService';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CartService } from './services/cartService';
     BannerComponent,
     ProductPromotionCardComponent,
     LoginComponent,
+    NavBarComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule],
   providers: [ProductsService, AuthService, CartService],
