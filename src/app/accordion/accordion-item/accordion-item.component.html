@@ -1,0 +1,9 @@
+<div class="accordion-item">
+  <div class="accordion-div" (click)="toggleAccordion()">
+    <p class="accordion-title">{{ title }}</p>
+    <span>⟲</span>
+  </div>
+  <div *ngIf="isOpen" class="accordion-content">
+    {{ content }}
+  </div>
+</div>

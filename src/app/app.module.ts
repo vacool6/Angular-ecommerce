@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/authService';
 import { CartService } from './services/cartService';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AccordionItemComponent } from './accordion/accordion-item/accordion-item.component';
+import { AccordionComponent } from './accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ProductPromotionCardComponent,
     LoginComponent,
     NavBarComponent,
+    AccordionItemComponent,
+    AccordionComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule],
   providers: [ProductsService, AuthService, CartService],

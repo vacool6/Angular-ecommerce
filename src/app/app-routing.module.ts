@@ -16,7 +16,7 @@ const appRouter: Routes = [
     component: SearchPageComponent,
   },
   {
-    path: 'product-details',
+    path: 'product-details/:id',
     component: ProductDetailsPageComponent,
   },
 

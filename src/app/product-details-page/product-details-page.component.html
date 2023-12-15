@@ -1,1 +1,58 @@
-<p>product-details-page works!</p>
+<section class="pd-container">
+  <p class="pd-name">
+    <i>{{ productDetails.name }}</i>
+  </p>
+  <div class="flex-container">
+    <div class="fc-1">
+      <img
+        class="pd-img"
+        src="{{ productDetails.image }}"
+        alt="product-image"
+        height="700"
+      />
+    </div>
+    <div class="fc-2">
+      <h2>{{ productDetails.name }}</h2>
+      <p class="product-price">₹ {{ productDetails.price }}</p>
+      <p class="taxes"><i>Inclusive of all taxes?</i></p>
+
+      <hr />
+
+      <h3>Color</h3>
+      <div class="color-swatches">
+        <span
+          *ngFor="let color of productDetails.colors; let i = index"
+          [ngStyle]="{ backgroundColor: color }"
+        ></span>
+      </div>
+
+      <hr />
+
+      <h3>Size</h3>
+      <div class="sizes-container">
+        <span
+          class="size-value"
+          *ngFor="
+            let size of getObjectKeys(productDetails.sizes);
+            let i = index
+          "
+          >{{ size }}</span
+        >
+      </div>
+      <br />
+      <hr />
+
+      <h3>More info</h3>
+      <p>
+        <i>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero sit
+          voluptatibus quia delectus sed debitis quam velit minima dolor.
+          Reiciendis qui, nemo delectus minus ipsa debitis officia placeat
+          omnis! Molestias!</i
+        >
+      </p>
+    </div>
+  </div>
+
+  <app-accordion [accordionContents]="{productDetails}"></app-accordion>
+</section>

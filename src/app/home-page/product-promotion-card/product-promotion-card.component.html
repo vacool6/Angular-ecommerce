@@ -14,7 +14,12 @@
         }"
         >Item Added To Cart</span
       >
-      <img src="{{ item.image }}" alt="{{ item.name }}" height="350" />
+      <img
+        src="{{ item.image }}"
+        alt="{{ item.name }}"
+        height="350"
+        (click)="redirectToDetails(item)"
+      />
       <p>{{ item.name }}</p>
       <button
         class="add-to-cart-btn"

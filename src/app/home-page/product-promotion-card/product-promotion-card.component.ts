@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cartService';
 
 @Component({
@@ -12,7 +13,10 @@ export class ProductPromotionCardComponent {
   @Input() title: string = '';
   @Input() data: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private readonly router: Router,
+    private cartService: CartService
+  ) {}
 
   ngDoCheck() {
     for (let item of this.cartService.cartItems) {
@@ -29,5 +33,12 @@ export class ProductPromotionCardComponent {
     }
 
     return this.cartService.addItemToCart({ ...item, isAddedToCart: true });
+  }
+
+  redirectToDetails(item: any) {
+    console.log(item);
+    this.router.navigate([`/product-details/${item.name}`], {
+      queryParams: { id: item.id, name: item.name },
+    });
   }
 }
