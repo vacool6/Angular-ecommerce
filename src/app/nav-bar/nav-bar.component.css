@@ -16,11 +16,8 @@
 .dropdown-container {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 1.75rem;
   left: -417px;
-  background-color: white;
-  border: 1px solid transparent;
-  width: calc(100% + 10000px);
   box-sizing: border-box;
   border-top: white;
   text-align: left;
@@ -36,6 +33,7 @@
   margin-left: 400px;
   margin-top: 30px;
   text-align: left;
+  background-color: white;
 }
 
 .dropdown-container a:hover {

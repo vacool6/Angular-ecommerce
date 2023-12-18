@@ -7,7 +7,7 @@ export class ProductsService {
       id: '1top',
       name: "Men's 501 Black Regular Fit Jeans",
       image: '../../assets/top/p1.jpg',
-      price: 6000,
+      price: 3999.34,
       sizes: {
         small: true,
         xl: false,
@@ -34,7 +34,7 @@ export class ProductsService {
       id: '2top',
       name: "Men's 509 Jeans",
       image: '../../assets/top/p2.jpg',
-      price: 6000,
+      price: 1999,
       sizes: {
         small: true,
         xl: false,
@@ -61,7 +61,7 @@ export class ProductsService {
       id: '3top',
       name: "Men's 300  T-shirt",
       image: '../../assets/top/p3.jpg',
-      price: 6000,
+      price: 2899.99,
       sizes: {
         small: true,
         xl: false,
@@ -88,7 +88,7 @@ export class ProductsService {
       id: '4top',
       name: "Men's essentials",
       image: '../../assets/top/p4.jpg',
-      price: 6000,
+      price: 2455.98,
       sizes: {
         small: true,
         xl: false,
@@ -118,7 +118,7 @@ export class ProductsService {
       id: '1new',
       name: "Men's stuff",
       image: '../../assets/new/p1.jpg',
-      price: 6000,
+      price: 4557.33,
       sizes: {
         small: true,
         xl: false,
@@ -145,7 +145,7 @@ export class ProductsService {
       id: '2new',
       name: "Women's stuff",
       image: '../../assets/new/p2.jpg',
-      price: 6000,
+      price: 999.99,
       sizes: {
         small: true,
         xl: false,
@@ -172,7 +172,7 @@ export class ProductsService {
       id: '3new',
       name: 'Stuff for me',
       image: '../../assets/new/p3.jpg',
-      price: 6000,
+      price: 1999,
       sizes: {
         small: true,
         xl: false,
@@ -199,7 +199,7 @@ export class ProductsService {
       id: '4new',
       name: 'Stuff for all',
       image: '../../assets/new/p4.jpg',
-      price: 6000,
+      price: 3000,
       sizes: {
         small: true,
         xl: false,

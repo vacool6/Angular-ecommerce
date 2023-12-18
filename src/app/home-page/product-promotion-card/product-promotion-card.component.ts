@@ -32,7 +32,11 @@ export class ProductPromotionCardComponent {
       if (i.id === item.id) return alert('Item already added to cart 😄');
     }
 
-    return this.cartService.addItemToCart({ ...item, isAddedToCart: true });
+    return this.cartService.addItemToCart({
+      ...item,
+      isAddedToCart: true,
+      quantity: 1,
+    });
   }
 
   redirectToDetails(item: any) {

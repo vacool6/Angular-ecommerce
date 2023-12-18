@@ -1,0 +1,23 @@
+.quantity-btn {
+  display: flex;
+}
+
+.quantity-btn-section1 {
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 6rem;
+  height: 2rem;
+}
+
+button {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.delete-btn {
+  margin-left: 1rem;
+}

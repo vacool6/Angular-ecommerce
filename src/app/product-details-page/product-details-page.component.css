@@ -38,7 +38,6 @@
   height: 3rem;
   margin: 0.25rem;
   border-radius: 50%;
-  border: 4px double rgb(9, 64, 126);
 }
 
 .size-value {
@@ -46,4 +45,20 @@
   padding: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 4px;
+}
+
+.add-to-cart-btn {
+  border: none;
+  background: none;
+  width: 100%;
+  color: white;
+  background-color: purple;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
 }

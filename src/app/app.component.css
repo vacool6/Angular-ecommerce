@@ -67,7 +67,7 @@
 }
 
 .header input::placeholder {
-  font-size: 16px;
+  font-size: 14px;
   color: rgb(33, 101, 97);
 }
 
@@ -97,8 +97,13 @@
 }
 
 .cart-link {
-  position: relative;
   font-size: 14px;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.cart-link:hover {
+  font-size: 18px;
 }
 
 .cart-count {
