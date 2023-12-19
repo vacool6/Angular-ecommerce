@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+//
+import { searchBox } from '../coveo/controllers';
 
 @Component({
   selector: 'app-search-page',
@@ -14,5 +16,10 @@ export class SearchPageComponent {
     this.route.queryParams.subscribe((params) => {
       this.searchedFor = params['q'];
     });
+  }
+
+  ngDoCheck() {
+    console.log(searchBox.state);
+    console.log(this.searchedFor);
   }
 }
