@@ -2,7 +2,6 @@
     <p>{{result.title}}</p>
 </div> -->
 
-
 <div class="card-container" *ngFor="let resultItem of results">
     <div style="background-color: #eeee" *ngif="resultItem.raw.ec_images.length !== 0">
 
@@ -21,5 +20,6 @@
     <div>
         <p>Source: {{resultItem.raw.source}}</p>
         <p>Object Type: {{resultItem.raw.objecttype}}</p>
+        <h2>{{resultItem.raw["ec_brand"]}}</h2>
     </div>
 </div>

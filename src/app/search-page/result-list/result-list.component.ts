@@ -14,6 +14,9 @@ export class ResultListComponent {
   }
 
   ngDoCheck() {
-    console.log('headless controller => ', headlessResultList.state);
+    console.log(
+      'headless result list controller => ',
+      headlessResultList.state
+    );
   }
 }

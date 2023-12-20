@@ -32,8 +32,8 @@ export const headlessResultList: ResultList = buildResultList(headlessEngine);
 // facet
 export const headlessFacet: Facet = buildFacet(headlessEngine, {
   options: {
-    numberOfValues: 5,
-    field: 'source',
+    numberOfValues: 1,
+    field: 'ec_brand',
   },
 });
 

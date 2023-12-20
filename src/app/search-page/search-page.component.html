@@ -3,7 +3,20 @@
 <p *ngIf="isLoading">LOADING........</p>
 
 <section *ngIf="!isLoading">
-  <app-result-list></app-result-list>
-  <app-facet></app-facet>
-  <app-pager></app-pager>
+  <div>
+    <h2>facet starts here</h2>
+    <app-facet></app-facet>
+    <h2>facet ends here</h2>
+  </div>
+  <div>
+    <h2>results list starts here</h2>
+    <app-result-list></app-result-list>
+    <h2>results list ends here</h2>
+  </div>
+
+  <div>
+    <h2>pager Starts Here</h2>
+    <app-pager></app-pager>
+    <h2>pager ends Here</h2>
+  </div>
 </section>
