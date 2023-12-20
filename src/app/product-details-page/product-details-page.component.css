@@ -1,0 +1,64 @@
+.pd-container {
+  padding: 4rem 2rem;
+}
+
+.pd-img {
+  width: 40rem;
+}
+
+.fc-1 {
+  width: 47.5%;
+}
+.fc-2 {
+  width: 47.5%;
+}
+
+.fc-2 h2 {
+  font-weight: 1000;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.taxes {
+  color: gray;
+}
+
+.color-swatches {
+  display: flex;
+}
+.color-swatches span {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.25rem;
+  border-radius: 50%;
+}
+
+.size-value {
+  border: 1px solid gray;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}
+
+.add-to-cart-btn {
+  border: none;
+  background: none;
+  width: 100%;
+  color: white;
+  background-color: purple;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}

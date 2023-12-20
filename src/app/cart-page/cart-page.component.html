@@ -1,0 +1,43 @@
+<section class="cart-container">
+  <h1>YOUR CART</h1>
+
+  <p *ngIf="cartItems.length === 0">Your cart is empty</p>
+
+  <table *ngIf="cartItems.length !== 0">
+    <thead>
+      <td>PRODUCT</td>
+      <td>QUANTITY</td>
+      <td>TOTAL</td>
+    </thead>
+    <tbody *ngFor="let item of cartItems; let i = index">
+      <td class="cart-info">
+        <div class="cart-info-container">
+          <div class="cart-info-i1">
+            <img src="{{ item.image }}" alt="item-image" height="200" />
+          </div>
+          <div class="cart-info-i2">
+            <p>{{ item.name }}</p>
+            <p>₹ {{ item.price }}</p>
+            <p>Color: red</p>
+            <p>Size : 7</p>
+          </div>
+        </div>
+      </td>
+      <td class="cart-qty">
+        <app-quantity-switch
+          [id]="item.id"
+          [quantity]="item.quantity"
+        ></app-quantity-switch>
+      </td>
+      <td class="cart-total">₹ {{ item.quantity * item.price }}</td>
+    </tbody>
+  </table>
+  <div *ngIf="cartItems.length !== 0" class="subtotal">
+    <hr />
+    <p class="subtotal-info">
+      SUBTOTAL <i>₹{{ getSubtotal() }}</i>
+    </p>
+    <p>Tax included?</p>
+    <button class="place-order-btn">PLACE ORDER</button>
+  </div>
+</section>

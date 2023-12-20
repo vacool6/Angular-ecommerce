@@ -1,0 +1,43 @@
+<main>
+  <section class="container">
+    <section [ngStyle]="{ display: isLoginModalOpen ? 'block' : 'none' }">
+      <app-login></app-login>
+    </section>
+
+    <section class="auth">
+      <a (click)="openLoginModal()">Sign In / Create account</a>
+    </section>
+
+    <section class="header">
+      <div class="navbar"><app-nav-bar></app-nav-bar></div>
+
+      <h1 routerLink="/" class="logo">LEVIS <sup>PoC &reg;</sup></h1>
+
+      <div class="search-section">
+        <input
+          placeholder="Tell us what's on your mind"
+          [(ngModel)]="searchValue"
+        />
+        <button (click)="onSearch()">Search</button>
+        <a routerLink="/cart" class="cart-link">
+          <span
+            >🛒
+            <span
+              class="cart-count"
+              [ngStyle]="{ backgroundColor: cartLength > 0 ? 'green' : 'grey' }"
+              >{{ cartLength }}</span
+            ></span
+          >
+        </a>
+      </div>
+    </section>
+
+    <section class="main-content">
+      <router-outlet></router-outlet>
+    </section>
+
+    <footer class="footer">
+      © 2023 - 2024 LEVIS <sup>PoC &reg;</sup> Code like music ^_-
+    </footer>
+  </section>
+</main>

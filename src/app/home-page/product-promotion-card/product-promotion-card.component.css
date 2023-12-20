@@ -1,0 +1,82 @@
+.product-promotion-card {
+  margin: 10rem 0;
+}
+
+.container {
+  display: flex;
+  margin: 1rem 0rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-item {
+  width: 15rem;
+  height: 30rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.container-item:hover {
+  box-shadow: 4px 4px 6px black;
+  transform: scale(1.01);
+}
+
+.container-item img {
+  width: 100%;
+}
+
+.home-header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 1000;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  height: 3rem;
+  font-size: 18px;
+  border-radius: inherit;
+  background-color: purple;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}
+
+.add-to-cart-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.info-text {
+  background-color: green;
+  color: white;
+
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  padding: 0;
+}
+
+.container-item:hover .info-text {
+  width: 75%;
+  height: 1rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+  transition: 0.5s font-size, 0.5s width, 0.01s height;
+}

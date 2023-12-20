@@ -1,0 +1,41 @@
+<nav class="navbar">
+  <div
+    *ngFor="let menuItem of menuItems; let i = index"
+    class="navItem"
+    (mouseenter)="onMouseEnter(i)"
+    (mouseleave)="onMouseLeave()"
+  >
+    {{ menuItem }}
+
+    <div
+      *ngIf="showDropdown && i === activeLinkIndex"
+      class="dropdown-container"
+    >
+      <ng-container *ngIf="menuItem === 'Collections'">
+        <a routerLink="/">Hoodies</a>
+        <a routerLink="/">Hats</a>
+        <a routerLink="/">Boots</a>
+        <a routerLink="/">Shirts</a>
+        <a routerLink="/">Pants</a>
+        <a routerLink="/">Shorts</a>
+      </ng-container>
+
+      <ng-container *ngIf="menuItem === 'Men'">
+        <a routerLink="/">Shirts</a>
+        <a routerLink="/">Pants</a>
+      </ng-container>
+
+      <ng-container *ngIf="menuItem === 'Women'">
+        <a routerLink="/">Tracks</a>
+        <a routerLink="/">Tops</a>
+        <a routerLink="/">jeans</a>
+      </ng-container>
+
+      <ng-container *ngIf="menuItem === 'Kids'">
+        <a routerLink="/">Pants</a>
+        <a routerLink="/">hats</a>
+        <a routerLink="/">jeans</a>
+      </ng-container>
+    </div>
+  </div>
+</nav>
