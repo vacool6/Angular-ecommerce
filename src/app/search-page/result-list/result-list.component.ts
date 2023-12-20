@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { headlessResultList } from '../coveo/controllers';
-import { headlessEngine } from '../coveo/engine';
+import { headlessResultList } from '../../coveo/controllers';
+import { headlessEngine } from '../../coveo/engine';
 
 @Component({
   selector: 'app-result-list',

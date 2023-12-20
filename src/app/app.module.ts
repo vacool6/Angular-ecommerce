@@ -22,9 +22,9 @@ import { AccordionItemComponent } from './accordion/accordion-item/accordion-ite
 import { AccordionComponent } from './accordion/accordion.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { QuantitySwitchComponent } from './cart-page/quantity-switch/quantity-switch.component';
-import { ResultListComponent } from './result-list/result-list.component';
-import { FacetComponent } from './facet/facet.component';
-import { PagerComponent } from './pager/pager.component';
+import { ResultListComponent } from './search-page/result-list/result-list.component';
+import { FacetComponent } from './search-page/facet/facet.component';
+import { PagerComponent } from './search-page/pager/pager.component';
 
 @NgModule({
   declarations: [

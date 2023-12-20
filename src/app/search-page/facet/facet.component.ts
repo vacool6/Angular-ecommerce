@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { headlessFacet } from '../coveo/controllers';
+import { headlessFacet } from '../../coveo/controllers';
 
 @Component({
   selector: 'app-facet',

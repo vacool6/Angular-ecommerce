@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { headlessResultsPerPage } from '../coveo/controllers';
+import { headlessResultsPerPage } from '../../coveo/controllers';
 
 @Component({
   selector: 'app-pager',
