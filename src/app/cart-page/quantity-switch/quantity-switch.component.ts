@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CartService } from 'src/app/services/cartService';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-quantity-switch',

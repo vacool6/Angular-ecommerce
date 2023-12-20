@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from 'src/app/services/cartService';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-promotion-card',

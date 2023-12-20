@@ -1,7 +1,7 @@
 import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './services/authService';
-import { CartService } from './services/cartService';
+import { AuthService } from './services/auth.service';
+import { CartService } from './services/cart.service';
 //
 import { searchBox } from './coveo/controllers';
 
