@@ -10,21 +10,22 @@ import { searchBox } from '../coveo/controllers';
 })
 export class SearchPageComponent {
   searchedFor = '';
+  isLoading: boolean = true;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.searchedFor = params['q'];
     });
+
     searchBox.updateText(this.searchedFor);
     searchBox.submit();
-    searchBox.subscribe(() => {
-      searchBox.state;
-    });
+
+    this.isLoading = searchBox.state.isLoading;
   }
 
   ngDoCheck() {
-    console.log('search box state => ', searchBox.state);
-    // console.log(this.searchedFor);
+    this.isLoading = searchBox.state.isLoading;
   }
 }

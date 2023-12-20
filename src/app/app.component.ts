@@ -2,6 +2,8 @@ import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/authService';
 import { CartService } from './services/cartService';
+//
+import { searchBox } from './coveo/controllers';
 
 @Component({
   selector: 'app-root',
@@ -26,10 +28,17 @@ export class AppComponent {
   }
 
   onSearch() {
+    searchBox.subscribe(() => {
+      searchBox.state;
+    });
+
     if (this.searchValue) {
       this.router.navigate([`/search`], {
         queryParams: { q: this.searchValue },
       });
+
+      searchBox.updateText(this.searchValue);
+      searchBox.submit();
     } else {
       return;
     }
