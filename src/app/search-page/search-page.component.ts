@@ -16,10 +16,15 @@ export class SearchPageComponent {
     this.route.queryParams.subscribe((params) => {
       this.searchedFor = params['q'];
     });
+    searchBox.updateText(this.searchedFor);
+    searchBox.submit();
+    searchBox.subscribe(() => {
+      searchBox.state;
+    });
   }
 
   ngDoCheck() {
-    console.log(searchBox.state);
-    console.log(this.searchedFor);
+    console.log('search box state => ', searchBox.state);
+    // console.log(this.searchedFor);
   }
 }

@@ -1,0 +1,25 @@
+<!-- <div *ngFor="let result of results">
+    <p>{{result.title}}</p>
+</div> -->
+
+
+<div class="card-container" *ngFor="let resultItem of results">
+    <div style="background-color: #eeee" *ngif="resultItem.raw.ec_images.length !== 0">
+
+        <img class="image" src="'resultItem.raw.ec_images[0]'" alt="'resultItem.title'">
+    </div>
+    <div class="details-container">
+        <!-- <div class="color-swatchet-container">
+            <app-color-swatches-list [colors]="resultItem.colors"></app-color-swatches-list>
+        </div> -->
+        <p> Title: {{resultItem.title}}</p>
+        <!-- <span>${{resultItem.price}} </span><span>MRP: {{resultItem.mrp}}</span><span>({{resultItem.discount}} off)</span> -->
+    </div>
+    <div>
+        <p>Description: {{resultItem.excerpt}}</p>
+    </div>
+    <div>
+        <p>Source: {{resultItem.raw.source}}</p>
+        <p>Object Type: {{resultItem.raw.objecttype}}</p>
+    </div>
+</div>
