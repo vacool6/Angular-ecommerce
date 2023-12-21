@@ -32,6 +32,7 @@ import { QuantitySwitchComponent } from './cart-page/quantity-switch/quantity-sw
 import { ResultListComponent } from './search-page/result-list/result-list.component';
 import { FacetComponent } from './search-page/facet/facet.component';
 import { PagerComponent } from './search-page/pager/pager.component';
+import { FacetListComponent } from './search-page/facet-list/facet-list.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { PagerComponent } from './search-page/pager/pager.component';
     ResultListComponent,
     FacetComponent,
     PagerComponent,
+    FacetListComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
   providers: [ProductsService, AuthService, CartService, ApiService],

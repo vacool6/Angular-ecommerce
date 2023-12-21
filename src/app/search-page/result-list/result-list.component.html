@@ -3,10 +3,10 @@
 </div> -->
 
 <div class="card-container" *ngFor="let resultItem of results">
-    <div style="background-color: #eeee" *ngif="resultItem.raw.ec_images.length !== 0">
+    <!-- <div style="background-color: #eeee" *ngIf="resultItem.raw['ec_images'].length !== 0">
 
         <img class="image" src="'resultItem.raw.ec_images[0]'" alt="'resultItem.title'">
-    </div>
+    </div> -->
     <div class="details-container">
         <!-- <div class="color-swatchet-container">
             <app-color-swatches-list [colors]="resultItem.colors"></app-color-swatches-list>

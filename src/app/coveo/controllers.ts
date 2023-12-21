@@ -29,13 +29,23 @@ export const searchBox: SearchBox = buildSearchBox(headlessEngine);
 // resultList
 export const headlessResultList: ResultList = buildResultList(headlessEngine);
 
+let field = '';
+
+export const setFieldValue = (fieldValue: any) => {
+  field = fieldValue;
+};
+
+export const createheadlessFacetController = (fieldValue: any) => {
+  return buildFacet(headlessEngine, {
+    options: {
+      numberOfValues: 5,
+      field: fieldValue,
+    },
+  });
+};
+
 // facet
-export const headlessFacet: Facet = buildFacet(headlessEngine, {
-  options: {
-    numberOfValues: 1,
-    field: 'ec_brand',
-  },
-});
+export const headlessFacet: Facet = createheadlessFacetController(field);
 
 export const headlessResultsPerPage: ResultsPerPage = buildResultsPerPage(
   headlessEngine,

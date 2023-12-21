@@ -1,29 +1,31 @@
-import { Component, Input } from '@angular/core';
-import { buildFacet, Facet, FacetValue } from '@coveo/headless';
-import { headlessFacet as headlessFacetController } from '../../coveo/controllers';
-import { headlessEngine } from 'src/app/coveo/engine';
-// import { headlessEngine } from 'src/app/coveo/engine';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  buildFacet,
+  Facet,
+  FacetValue,
+  buildSearchEngine,
+  SearchEngine,
+  getOrganizationEndpoints,
+} from '@coveo/headless';
+import { headlessFacet, setFieldValue } from '../../coveo/controllers';
 
 @Component({
   selector: 'app-facet',
   templateUrl: './facet.component.html',
   styleUrls: ['./facet.component.css'],
 })
-export class FacetComponent {
+export class FacetComponent implements OnInit {
   @Input()
   public field!: string;
   @Input()
-  public title!: String;
+  public title: String = 'Source';
 
   private headlessFacet!: Facet;
 
-  public constructor() {
-    console.log(
-      'headlessFacet controller=> ',
-      headlessFacetController.state.values
-    );
+  // private headlessEngineForFacets!: SearchEngine;
 
-    // this.headlessFacet = headlessFacetController;
+  public constructor() {
+    setFieldValue(this.field);
   }
 
   public showMore() {
@@ -47,17 +49,18 @@ export class FacetComponent {
   }
 
   public get facetValues(): FacetValue[] {
-    // return this.headlessFacet.state.values;
-    return headlessFacetController.state.values;
+    console.log(
+      'Facet values in facet component----------> ',
+      this.headlessFacet
+    );
+    return this.headlessFacet.state.values;
+    // return headlessFacetController.state.values;
   }
 
-  ngOnInit() {
-    this.headlessFacet = buildFacet(headlessEngine, {
-      options: {
-        numberOfValues: 5,
-        field: this.field || 'source',
-      },
-    });
-    console.log('this.headlessFacet ------> ', this.headlessFacet);
+  public ngOnInit() {
+    console.log(
+      'controller from the controllers file in facet component ==========================> ',
+      headlessFacet
+    );
   }
 }
