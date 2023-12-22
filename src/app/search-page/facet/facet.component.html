@@ -1,7 +1,7 @@
 <div>
-    <h4>{{this.title}}</h4>
+    <h4>Title: {{this.title}}</h4>
     <div *ngFor="let facet of facetValues">
-        <label><input type="checkbox" />{{facet.value}}</label>
+        <label><input (click)="isFacetValueSelected(facet)" type="checkbox" />{{facet.value}}</label>
     </div>
     <div *ngIf="canShowLess()">
         <button (click)="showLess()">Show Less</button>
@@ -10,6 +10,3 @@
         <button (click)="showMore()">Show More</button>
     </div>
 </div>
-
-
-<!-- trying facet implementation -->

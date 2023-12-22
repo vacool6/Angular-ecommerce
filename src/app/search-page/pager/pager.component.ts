@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { headlessResultsPerPage } from '../../coveo/controllers';
 
 @Component({
@@ -7,7 +13,23 @@ import { headlessResultsPerPage } from '../../coveo/controllers';
   styleUrls: ['./pager.component.css'],
 })
 export class PagerComponent {
-  constructor() {
-    console.log('pagercontroller => ', headlessResultsPerPage);
+  //   @Input()
+  //   values!: [];
+  //   @Input()
+  //   value!: string[];
+  //
+  //   @Output()
+  //   valueChange!: EventEmitter<any>;
+  //
+  //   constructor(private elementRef: ElementRef) {
+  //     this.valueChange = new EventEmitter();
+  //   }
+  //
+  //   select(value: string) {
+  //     this.valueChange.emit(value);
+  //   }
+
+  onClickHandle(value: string) {
+    console.log('Value on click item => ', value);
   }
 }

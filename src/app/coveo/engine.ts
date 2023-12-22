@@ -1,5 +1,4 @@
 import { buildSearchEngine, getOrganizationEndpoints } from '@coveo/headless';
-// Envs
 import { ORG_ID, ACCESS_TOKEN } from '../env';
 
 export const headlessEngine = buildSearchEngine({
@@ -10,10 +9,10 @@ export const headlessEngine = buildSearchEngine({
   },
 });
 
-// const onStateUpdate = () => {
-//   const state = headlessEngine.state;
-// };
-//
-// const unsubscribe = headlessEngine.subscribe(onStateUpdate);
-//
-// unsubscribe();
+const onStateUpdate = () => {
+  const state = headlessEngine.state;
+};
+
+const unsubscribe = headlessEngine.subscribe(onStateUpdate);
+
+unsubscribe();

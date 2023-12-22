@@ -1,13 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Facet, FacetValue } from '@coveo/headless';
 import {
-  buildFacet,
-  Facet,
-  FacetValue,
-  buildSearchEngine,
-  SearchEngine,
-  getOrganizationEndpoints,
-} from '@coveo/headless';
-import { headlessFacet, setFieldValue } from '../../coveo/controllers';
+  sourceFacetController,
+  brandFacetController,
+  categoryFacetController,
+  sizesFacetController,
+} from '../../coveo/controllers';
 
 @Component({
   selector: 'app-facet',
@@ -16,51 +14,50 @@ import { headlessFacet, setFieldValue } from '../../coveo/controllers';
 })
 export class FacetComponent implements OnInit {
   @Input()
-  public field!: string;
+  field!: string;
   @Input()
-  public title: String = 'Source';
+  title: String = 'Source';
 
   private headlessFacet!: Facet;
 
-  // private headlessEngineForFacets!: SearchEngine;
+  constructor() {}
 
-  public constructor() {
-    setFieldValue(this.field);
-  }
-
-  public showMore() {
+  showMore() {
     this.headlessFacet.showMoreValues();
   }
 
-  public showLess() {
+  showLess() {
     this.headlessFacet.showLessValues();
   }
 
-  public canShowLess() {
+  canShowLess() {
     return this.headlessFacet.state.canShowLessValues;
   }
 
-  public canShowMore() {
+  canShowMore() {
     return this.headlessFacet.state.canShowMoreValues;
   }
 
-  public isFacetValueSelected(value: FacetValue): boolean {
+  isFacetValueSelected(value: FacetValue): boolean {
+    console.log('facet value selected!');
+    console.log(this.headlessFacet.state.values);
+    this.headlessFacet.state.values.map((facet) => (facet.state = 'selected'));
     return this.headlessFacet.isValueSelected(value);
   }
 
-  public get facetValues(): FacetValue[] {
-    console.log(
-      'Facet values in facet component----------> ',
-      this.headlessFacet
-    );
+  get facetValues(): FacetValue[] {
     return this.headlessFacet.state.values;
-    // return headlessFacetController.state.values;
   }
 
   public ngOnInit() {
-    console.log(
-      'controller from the controllers file in facet component ==========================> ',
-      headlessFacet
-    );
+    if (this.field == 'source') {
+      this.headlessFacet = sourceFacetController;
+    } else if (this.field == 'ec_brand') {
+      this.headlessFacet = brandFacetController;
+    } else if (this.field == 'ec_category') {
+      this.headlessFacet = categoryFacetController;
+    } else if (this.field == 'cat_available_sizes') {
+      this.headlessFacet = sizesFacetController;
+    }
   }
 }
