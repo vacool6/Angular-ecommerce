@@ -9,6 +9,11 @@ import { headlessEngine } from '../../coveo/engine';
 })
 export class ResultListComponent {
   public images: String[] = [];
+
+  p: number = 1;
+  itemsPerPage: number = 10;
+  totalNumberOfResults: any;
+
   public get results() {
     return headlessResultList.state.results;
   }
@@ -18,5 +23,6 @@ export class ResultListComponent {
       'headless result list controller => ',
       headlessResultList.state
     );
+    this.totalNumberOfResults = headlessResultList.state.results.length;
   }
 }

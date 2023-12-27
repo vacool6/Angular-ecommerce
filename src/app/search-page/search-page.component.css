@@ -1,0 +1,21 @@
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+.facet-list-container {
+  padding: 10px;
+  border: 1px solid black;
+}
+.results-and-pager-container {
+  display: flex;
+  flex-direction: column;
+}
+.results-container {
+  margin-left: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+.pager-container {
+  align-self: flex-end;
+}

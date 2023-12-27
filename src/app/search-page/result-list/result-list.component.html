@@ -1,25 +1,25 @@
-<!-- <div *ngFor="let result of results">
-    <p>{{result.title}}</p>
-</div> -->
+<div>
 
-<div class="card-container" *ngFor="let resultItem of results">
-    <!-- <div style="background-color: #eeee" *ngIf="resultItem.raw['ec_images'].length !== 0">
+    <div class="card-container" *ngFor="let resultItem of results | paginate: {itemsPerPage: itemsPerPage, currentPage: p}">
+        <div class="details-container">
+            <h1> Title: {{resultItem.title}}</h1>
+        </div>
+        <div>
+            <!-- <img [src]="resultItem.raw['ec_images'][0]" alt=""> -->
+        </div>
+        <div>
+            <p>Description: {{resultItem.excerpt}}</p>
+        </div>
+        <div>
+            <p>Source: {{resultItem.raw.source}}</p>
+            <p>Object Type: {{resultItem.raw.objecttype}}</p>
+            <b>
+                <p>Brand: {{resultItem.raw["ec_brand"]}}</p>
+            </b>
+        </div>
+    </div>
 
-        <img class="image" src="'resultItem.raw.ec_images[0]'" alt="'resultItem.title'">
-    </div> -->
-    <div class="details-container">
-        <!-- <div class="color-swatchet-container">
-            <app-color-swatches-list [colors]="resultItem.colors"></app-color-swatches-list>
-        </div> -->
-        <p> Title: {{resultItem.title}}</p>
-        <!-- <span>${{resultItem.price}} </span><span>MRP: {{resultItem.mrp}}</span><span>({{resultItem.discount}} off)</span> -->
-    </div>
     <div>
-        <p>Description: {{resultItem.excerpt}}</p>
-    </div>
-    <div>
-        <p>Source: {{resultItem.raw.source}}</p>
-        <p>Object Type: {{resultItem.raw.objecttype}}</p>
-        <h2>{{resultItem.raw["ec_brand"]}}</h2>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

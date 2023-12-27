@@ -2,21 +2,18 @@
 
 <p *ngIf="isLoading">LOADING........</p>
 
-<section *ngIf="!isLoading">
-  <div>
-    <h2>facets starts here</h2>
+<section *ngIf="!isLoading" class="main-container">
+  <div class="facet-list-container">
     <app-facet-list></app-facet-list>
-    <h2>facets ends here</h2>
-  </div>
-  <div>
-    <h2>results list starts here</h2>
-    <app-result-list></app-result-list>
-    <h2>results list ends here</h2>
   </div>
 
-  <div>
-    <h2>pager Starts Here</h2>
-    <app-pager></app-pager>
-    <h2>pager ends Here</h2>
+  <div class="results-and-pager-container">
+    <div class="results-container">
+      <app-result-list></app-result-list>
+    </div>
+
+    <div class="pager-container">
+      <!-- <app-pager></app-pager> -->
+    </div>
   </div>
 </section>

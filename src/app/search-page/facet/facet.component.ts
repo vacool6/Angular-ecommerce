@@ -38,10 +38,24 @@ export class FacetComponent implements OnInit {
     return this.headlessFacet.state.canShowMoreValues;
   }
 
+  onChangeHandle(value: FacetValue) {
+    console.log('On change!', value);
+  }
+
+  // display condition for clear facet button
+  areFacetValuesSelected() {
+    return this.headlessFacet.state.hasActiveValues;
+  }
+
+  // to clear the facet
+  isFacetCleared() {
+    this.headlessFacet.deselectAll();
+  }
+
+  // filter the results by selecting the facet value
   isFacetValueSelected(value: FacetValue): boolean {
     console.log('facet value selected!');
-    console.log(this.headlessFacet.state.values);
-    this.headlessFacet.state.values.map((facet) => (facet.state = 'selected'));
+    this.headlessFacet.toggleSelect(value);
     return this.headlessFacet.isValueSelected(value);
   }
 

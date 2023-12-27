@@ -34,6 +34,9 @@ import { FacetComponent } from './search-page/facet/facet.component';
 import { PagerComponent } from './search-page/pager/pager.component';
 import { FacetListComponent } from './search-page/facet-list/facet-list.component';
 
+// for pagination
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +57,13 @@ import { FacetListComponent } from './search-page/facet-list/facet-list.componen
     PagerComponent,
     FacetListComponent,
   ],
-  imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRouter,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+  ],
   providers: [ProductsService, AuthService, CartService, ApiService],
   bootstrap: [AppComponent],
 })

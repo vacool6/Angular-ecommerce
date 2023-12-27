@@ -1,7 +1,11 @@
 <div>
     <h4>Title: {{this.title}}</h4>
-    <div *ngFor="let facet of facetValues">
-        <label><input (click)="isFacetValueSelected(facet)" type="checkbox" />{{facet.value}}</label>
+    <div *ngIf="areFacetValuesSelected()">
+        <button class="clear-facet-button" (click)="isFacetCleared()">X Clear</button>
+    </div>
+    <div *ngFor="let facet of facetValues" (change)="onChangeHandle(facet)">
+        <label><input (click)="isFacetValueSelected(facet)" type="checkbox" [checked]="facet.state === 'selected'" />
+            {{ facet.value }}</label>
     </div>
     <div *ngIf="canShowLess()">
         <button (click)="showLess()">Show Less</button>

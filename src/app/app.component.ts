@@ -4,7 +4,6 @@ import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
 //
 import { searchBox } from './coveo/controllers';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

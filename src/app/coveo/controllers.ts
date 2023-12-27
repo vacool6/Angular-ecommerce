@@ -68,5 +68,5 @@ export const sizesFacetController = buildFacet(headlessEngine, {
 
 export const headlessResultsPerPage: ResultsPerPage = buildResultsPerPage(
   headlessEngine,
-  { initialState: { numberOfResults: 20 } }
+  { initialState: { numberOfResults: 100 } }
 );
