@@ -1,20 +1,14 @@
 import {
   SearchBox,
-  SearchBoxOptions,
   buildSearchBox,
   buildResultList,
-  Result,
   ResultList,
   buildFacet,
-  Facet,
-  FacetValue,
   loadFieldActions,
-  buildPager,
   buildResultsPerPage,
-  Pager,
-  PagerState,
   ResultsPerPage,
-  ResultsPerPageState,
+  Pager,
+  buildPager,
 } from '@coveo/headless';
 import { headlessEngine } from './engine';
 
@@ -28,7 +22,7 @@ headlessEngine.dispatch(
   ])
 );
 
-// Search
+// search
 export const searchBox: SearchBox = buildSearchBox(headlessEngine);
 
 // resultList
@@ -40,7 +34,7 @@ export const setFieldValue = (fieldValue: any) => {
   field = fieldValue;
 };
 
-// facet
+// facets
 export const sourceFacetController = buildFacet(headlessEngine, {
   options: {
     numberOfValues: 5,
@@ -66,7 +60,10 @@ export const sizesFacetController = buildFacet(headlessEngine, {
   },
 });
 
+// pager
 export const headlessResultsPerPage: ResultsPerPage = buildResultsPerPage(
   headlessEngine,
-  { initialState: { numberOfResults: 100 } }
+  { initialState: { numberOfResults: 10 } }
 );
+
+export const headlessPager: Pager = buildPager(headlessEngine);

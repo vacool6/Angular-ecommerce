@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { headlessResultList } from '../../coveo/controllers';
-import { headlessEngine } from '../../coveo/engine';
+import {
+  headlessPager,
+  headlessResultList,
+  headlessResultsPerPage,
+} from '../../coveo/controllers';
 
 @Component({
   selector: 'app-result-list',
@@ -8,21 +11,10 @@ import { headlessEngine } from '../../coveo/engine';
   styleUrls: ['./result-list.component.css'],
 })
 export class ResultListComponent {
-  public images: String[] = [];
-
-  p: number = 1;
-  itemsPerPage: number = 10;
-  totalNumberOfResults: any;
-
-  public get results() {
-    return headlessResultList.state.results;
-  }
+  images: string[] = [];
+  results: any[] = [];
 
   ngDoCheck() {
-    console.log(
-      'headless result list controller => ',
-      headlessResultList.state
-    );
-    this.totalNumberOfResults = headlessResultList.state.results.length;
+    this.results = headlessResultList.state.results;
   }
 }
