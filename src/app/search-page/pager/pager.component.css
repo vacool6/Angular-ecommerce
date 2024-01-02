@@ -1,8 +1,14 @@
-.dropdown-content {
-  width: 150px;
-  height: 50px;
+.pager_container {
+  display: flex;
+  margin: 1rem 0;
 }
 
-.show {
-  display: block;
+.pagination_container {
+  display: flex;
+  margin-left: 2rem;
+  align-self: center;
+}
+
+.pagination_value {
+  margin: 0 1rem;
 }

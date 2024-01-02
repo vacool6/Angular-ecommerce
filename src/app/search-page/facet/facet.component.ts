@@ -13,12 +13,15 @@ import {
   styleUrls: ['./facet.component.css'],
 })
 export class FacetComponent implements OnInit {
-  @Input()
-  field!: string;
-  @Input()
-  title: String = 'Source';
+  @Input() field: string = '';
+  @Input() title: string = 'Source';
 
+  facetValues: FacetValue[] = [];
   private headlessFacet!: Facet;
+
+  // get facetValues(): FacetValue[] {
+  //   return this.headlessFacet.state.values;
+  // }
 
   constructor() {}
 
@@ -54,16 +57,11 @@ export class FacetComponent implements OnInit {
 
   // filter the results by selecting the facet value
   isFacetValueSelected(value: FacetValue): boolean {
-    console.log('facet value selected!');
     this.headlessFacet.toggleSelect(value);
     return this.headlessFacet.isValueSelected(value);
   }
 
-  get facetValues(): FacetValue[] {
-    return this.headlessFacet.state.values;
-  }
-
-  public ngOnInit() {
+  ngOnInit() {
     if (this.field == 'source') {
       this.headlessFacet = sourceFacetController;
     } else if (this.field == 'ec_brand') {
@@ -73,5 +71,9 @@ export class FacetComponent implements OnInit {
     } else if (this.field == 'cat_available_sizes') {
       this.headlessFacet = sizesFacetController;
     }
+  }
+
+  ngDoCheck() {
+    this.facetValues = this.headlessFacet.state.values;
   }
 }

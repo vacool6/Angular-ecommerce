@@ -1,16 +1,18 @@
-<div>
-    <h4>Title: {{this.title}}</h4>
-    <div *ngIf="areFacetValuesSelected()">
-        <button class="clear-facet-button" (click)="isFacetCleared()">X Clear</button>
+<div class="facet-bg-container">
+    <div class="title-clear-container">
+        <h4>{{this.title}}</h4>
+        <div *ngIf="areFacetValuesSelected()">
+            <button class="clear-facet-button" (click)="isFacetCleared()">X Clear</button>
+        </div>
     </div>
-    <div *ngFor="let facet of facetValues" (change)="onChangeHandle(facet)">
-        <label><input (click)="isFacetValueSelected(facet)" type="checkbox" [checked]="facet.state === 'selected'" />
+    <div class="facet-values-container" *ngFor="let facet of facetValues" (change)="onChangeHandle(facet)">
+        <label><input class="check-box" (click)="isFacetValueSelected(facet)" type="checkbox" [checked]="facet.state === 'selected'" />
             {{ facet.value }}</label>
     </div>
-    <div *ngIf="canShowLess()">
-        <button (click)="showLess()">Show Less</button>
+    <div class="show-more-container" *ngIf="canShowLess()">
+        <button class="show-more-less-button" (click)="showLess()">- Show Less</button>
     </div>
-    <div *ngIf="canShowMore()">
-        <button (click)="showMore()">Show More</button>
+    <div class="show-less-container" *ngIf="canShowMore()">
+        <button class="show-more-less-button" (click)="showMore()">+ Show More</button>
     </div>
 </div>

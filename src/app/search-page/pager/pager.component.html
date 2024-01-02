@@ -1,24 +1,28 @@
-<div>
-    <select onchange="" name="" id="">
-        <option onClick="onClickHandle(this)" value="10">10</option>
-        <option onClick="onClickHandle(value)" value="25">25</option>
-        <option onClick="onClickHandle(value)" value="50">50</option>
-        <option onClick="onClickHandle(value)" value="75">75</option>
-        <option onClick="onClickHandle(value)" value="100">100</option>
-    </select>
+<div class="pager_container">
+  <select
+    (ngModelChange)="onResultsPerPageChange($event)"
+    [(ngModel)]="results_per_page_value"
+  >
+    <option value="10">10</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+    <option value="75">75</option>
+    <option value="100">100</option>
+  </select>
+
+  <section class="pagination_container">
+    <button
+      (click)="paginationHandler('prev')"
+      [disabled]="!headless_pager.hasPreviousPage"
+    >
+      Prev
+    </button>
+    <div class="pagination_value">{{ headless_pager.currentPage }}</div>
+    <button
+      (click)="paginationHandler('next')"
+      [disabled]="!headless_pager.hasNextPage"
+    >
+      Next
+    </button>
+  </section>
 </div>
-
-<!-- 
-    <mat-paginator
-  [length]="pageCount"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25]"
-  [pageIndex]="pageIndex"
-  (page)="onPageEvent($event)"
->
-</mat-paginator>
- -->
-
-<!-- <ul>
-    <li *ngFor="let value of values" (click)="select(value.value)">{{value.label}}</li>
-</ul> -->
