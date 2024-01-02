@@ -70,3 +70,6 @@ export const headlessResultsPerPage: ResultsPerPage = buildResultsPerPage(
   headlessEngine,
   { initialState: { numberOfResults: 100 } }
 );
+
+// for pager
+// export const headlessResultsPerPage:
