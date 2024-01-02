@@ -11,7 +11,6 @@ import {
   styleUrls: ['./result-list.component.css'],
 })
 export class ResultListComponent {
-  images: string[] = [];
   results: any[] = [];
 
   ngDoCheck() {
