@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {
   headlessPager,
   headlessResultsPerPage,
@@ -28,5 +28,24 @@ export class PagerComponent {
 
   onResultsPerPageChange(newValue: string): void {
     headlessResultsPerPage.set(parseInt(newValue));
+  }
+
+  // HostListener is used to listen to any events that user performs
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    const windowHeight = window.innerHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollPosition =
+      document.body.scrollTop +
+      ((document.documentElement && document.documentElement.scrollTop) || 0);
+
+    const isAtBottom = scrollPosition > scrollHeight - windowHeight - 10;
+
+    if (isAtBottom) {
+      const availableResults =
+        headlessResultsPerPage.state.numberOfResults + 10;
+      headlessResultsPerPage.set(availableResults);
+      this.results_per_page_value = `${availableResults}`;
+    }
   }
 }
