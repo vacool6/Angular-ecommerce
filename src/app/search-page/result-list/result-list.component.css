@@ -1,0 +1,39 @@
+.card-container {
+  /* border: 1px solid red; */
+  padding: 10px;
+  width: 28%;
+  display: inline-flex;
+  flex-direction: column;
+  height: 533px;
+  margin: 10px 20px;
+}
+.card-bg-container {
+  display: flex;
+  justify-content: baseline;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  grid-row-gap: 55px;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 55%;
+}
+.details-container {
+  font-family: "roboto";
+  font-size: larger;
+}
+.details-container > h1 {
+  font-weight: 100;
+}
+.excerpt-container {
+  font-family: sans-serif;
+  color: grey;
+}
+.image-style {
+  width: 100%;
+}
+.brand-container {
+  font-family: "roboto";
+}

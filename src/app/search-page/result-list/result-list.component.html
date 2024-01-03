@@ -1,23 +1,18 @@
-<div>
+<div class="card-bg-container">
   <div class="card-container" *ngFor="let resultItem of results">
+    <div class="img-container">
+      <img [src]="resultItem.raw['ec_images'][0]" alt="" class="image-style" />
+    </div>
     <div class="details-container">
-      <h1>Title: {{ resultItem.title }}</h1>
+      <h1>{{ resultItem.title }}</h1>
+    </div>
+    <div class="excerpt-container">
+      <p>{{ resultItem.excerpt }}</p>
     </div>
     <div>
-      <img
-        [src]="resultItem.raw['ec_images'][0]"
-        alt=""
-        width="200"
-        height="200"
-      />
-    </div>
-    <div>
-      <p>Description: {{ resultItem.excerpt }}</p>
-    </div>
-    <div>
-      <p>Source: {{ resultItem.raw.source }}</p>
-      <p>Object Type: {{ resultItem.raw.objecttype }}</p>
-      <b>
+      <!-- <p>Source: {{ resultItem.raw.source }}</p> -->
+      <!-- <p>Object Type: {{ resultItem.raw.objecttype }}</p> -->
+      <b class="brand-container">
         <p>Brand: {{ resultItem.raw["ec_brand"] }}</p>
       </b>
     </div>

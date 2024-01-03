@@ -5,17 +5,29 @@
 }
 .facet-list-container {
   padding: 10px;
-  border: 1px solid black;
 }
 .results-and-pager-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .results-container {
+  /* border: 3px solid red; */
+  display: flex;
+  justify-content: space-between;
   margin-left: 5px;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 11px;
+  width: 100%;
 }
+
+app-result-list {
+  display: flex !important;
+  justify-content: space-between;
+}
+
 .pager-container {
   align-self: flex-end;
+}
+.facet-list-container {
+  width: 32%;
 }

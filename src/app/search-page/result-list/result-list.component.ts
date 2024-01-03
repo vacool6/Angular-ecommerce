@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  headlessPager,
-  headlessResultList,
-  headlessResultsPerPage,
-} from '../../coveo/controllers';
+import { headlessResultList } from '../../coveo/controllers';
 
 @Component({
   selector: 'app-result-list',

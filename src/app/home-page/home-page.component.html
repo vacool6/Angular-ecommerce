@@ -1,9 +1,18 @@
-<app-banner [imgSource]="'../../assets/banner/p2.webp'"></app-banner>
+<app-banner
+  [imageSources]="[
+    '../../assets/banner/new-banner1.jpg',
+    '../../assets/banner/new-banner.jpg'
+  ]"
+></app-banner>
 
-<app-product-promotion-card [title]="'END OF SEASON OF SALE'" [data]="top">
+<app-product-promotion-card [title]="'END OF SEASON SALE'" [data]="top">
 </app-product-promotion-card>
 
-<app-banner [imgSource]="'../../assets/banner/b1.jpg'"></app-banner>
+<app-banner
+  [imageSources]="[
+    'https://boathousestores.com/cdn/shop/collections/LEVIS_BP_F8-484353.png?v=1674503803'
+  ]"
+></app-banner>
 
 <app-product-promotion-card [title]="'NEW RELEASES'" [data]="newReleases">
 </app-product-promotion-card>

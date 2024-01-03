@@ -12,6 +12,7 @@ import {
 } from '@coveo/headless';
 import { headlessEngine } from './engine';
 
+//fields to include
 const FieldActions = loadFieldActions(headlessEngine);
 headlessEngine.dispatch(
   FieldActions.registerFieldsToInclude([
@@ -21,18 +22,11 @@ headlessEngine.dispatch(
     'ec_category',
   ])
 );
-
 // search
 export const searchBox: SearchBox = buildSearchBox(headlessEngine);
 
 // resultList
 export const headlessResultList: ResultList = buildResultList(headlessEngine);
-
-let field = '';
-//
-export const setFieldValue = (fieldValue: any) => {
-  field = fieldValue;
-};
 
 // facets
 export const sourceFacetController = buildFacet(headlessEngine, {
