@@ -13,34 +13,9 @@ export class ProductPromotionCardComponent {
   @Input() title: string = '';
   @Input() data: any[] = [];
 
-  constructor(
-    private readonly router: Router,
-    private cartService: CartService
-  ) {}
-
-  ngDoCheck() {
-    for (let item of this.cartService.cartItems) {
-      if (!this.itemsIdInCart.includes(item.id))
-        this.itemsIdInCart.push(item.id);
-    }
-  }
-
-  addToCart(id: string) {
-    const item = this.data.filter((item) => item.id === id)[0];
-
-    for (let i of this.cartService.cartItems) {
-      if (i.id === item.id) return alert('Item already added to cart 😄');
-    }
-
-    return this.cartService.addItemToCart({
-      ...item,
-      isAddedToCart: true,
-      quantity: 1,
-    });
-  }
+  constructor(private readonly router: Router) {}
 
   redirectToDetails(item: any) {
-    console.log(item);
     this.router.navigate([`/product-details/${item.name}`], {
       queryParams: { id: item.id, name: item.name },
     });

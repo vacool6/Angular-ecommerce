@@ -20,6 +20,8 @@ headlessEngine.dispatch(
     'ec_images',
     'cat_available_sizes',
     'ec_category',
+    'cat_color_swatch',
+    'cat_colors_info',
   ])
 );
 // search

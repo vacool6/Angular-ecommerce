@@ -12,12 +12,7 @@
   width: 100%;
 }
 .results-container {
-  /* border: 3px solid red; */
-  display: flex;
-  justify-content: space-between;
-  margin-left: 5px;
-  padding: 11px;
-  width: 100%;
+  padding: 0 1rem;
 }
 
 app-result-list {
@@ -30,4 +25,11 @@ app-result-list {
 }
 .facet-list-container {
   width: 32%;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
 }

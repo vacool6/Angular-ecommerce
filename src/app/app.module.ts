@@ -35,7 +35,6 @@ import { PagerComponent } from './search-page/pager/pager.component';
 import { FacetListComponent } from './search-page/facet-list/facet-list.component';
 
 // for pagination
-import { NgxPaginationModule } from 'ngx-pagination';
 import { ResultsPerPageComponent } from './results-per-page/results-per-page.component';
 
 @NgModule({
@@ -59,13 +58,7 @@ import { ResultsPerPageComponent } from './results-per-page/results-per-page.com
     FacetListComponent,
     ResultsPerPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRouter,
-    FormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-  ],
+  imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
   providers: [ProductsService, AuthService, CartService, ApiService],
   bootstrap: [AppComponent],
 })
