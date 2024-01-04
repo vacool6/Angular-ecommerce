@@ -7,14 +7,9 @@
       </button>
     </div>
   </div>
-  <div
-    class="facet-values-container"
-    *ngFor="let facet of facetValues"
-    (change)="onChangeHandle(facet)"
-  >
+  <div *ngFor="let facet of facetValues" (change)="onChangeHandle(facet)">
     <label
       ><input
-        class="check-box"
         (click)="isFacetValueSelected(facet)"
         type="checkbox"
         [checked]="facet.state === 'selected'"
@@ -22,14 +17,10 @@
       {{ facet.value }}</label
     >
   </div>
-  <div class="show-more-container" *ngIf="canShowLess()">
-    <button class="show-more-less-button" (click)="showLess()">
-      - Show Less
-    </button>
+  <div *ngIf="canShowLess()">
+    <button (click)="showLess()">Show Less</button>
   </div>
-  <div class="show-less-container" *ngIf="canShowMore()">
-    <button class="show-more-less-button" (click)="showMore()">
-      + Show More
-    </button>
+  <div *ngIf="canShowMore()">
+    <button (click)="showMore()">Show More</button>
   </div>
 </div>
