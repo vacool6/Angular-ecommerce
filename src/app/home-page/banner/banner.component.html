@@ -1,3 +1,9 @@
-<div class="bannerImage">
-  <img src="{{ imgSource }}" alt="bannerImg" height="700" />
+<!-- banner.component.html -->
+<div class="banner-container">
+  <img
+    *ngFor="let source of imageSources; let i = index"
+    [src]="source"
+    [class.active]="i === currentIndex"
+    [class.previous]="i === previousIndex"
+  />
 </div>

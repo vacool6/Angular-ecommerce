@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class CartService {
-  constructor(private readonly router: Router) {}
-
   cartItems: any[] = localStorage.getItem('cart-items')
     ? JSON.parse(localStorage.getItem('cart-items') as any)
     : [];

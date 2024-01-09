@@ -1,25 +1,86 @@
-<div>
-  <div class="card-container" *ngFor="let resultItem of results">
-    <div class="details-container">
-      <h1>Title: {{ resultItem.title }}</h1>
-    </div>
-    <div>
+<div class="card-bg-container">
+  <div
+    class="card-container"
+    *ngFor="let resultItem of results"
+    (mouseleave)="mouseLeaveEvent()"
+  >
+    <div class="img-container">
       <img
         [src]="resultItem.raw['ec_images'][0]"
-        alt=""
-        width="200"
-        height="200"
+        alt="actual image"
+        class="image-style"
+        *ngIf="resultItem.raw['ec_images']"
+      />
+      <img
+        src="../../../assets/placeholder.jpg"
+        alt="placeholder image"
+        class="image-style"
+        *ngIf="!resultItem.raw['ec_images']"
       />
     </div>
+
+    <br />
     <div>
-      <p>Description: {{ resultItem.excerpt }}</p>
-    </div>
-    <div>
-      <p>Source: {{ resultItem.raw.source }}</p>
-      <p>Object Type: {{ resultItem.raw.objecttype }}</p>
-      <b>
-        <p>Brand: {{ resultItem.raw["ec_brand"] }}</p>
+      <b class="brand-container">
+        {{ resultItem.raw["ec_brand"] }}
       </b>
     </div>
+
+    <div class="details-container">
+      <h1>{{ resultItem.title }}</h1>
+    </div>
+
+    <div class="excerpt-container">
+      <p>{{ resultItem.excerpt }}</p>
+    </div>
+
+    <section class="layover-container">
+      <div>
+        <div class="layover-container-sizes">
+          <p style="font-weight: 1000; font-size: 16px">SIZES</p>
+          <div class="layover-container-sizes--s">
+            <span
+              *ngFor="
+                let size of resultItem.raw['cat_available_sizes'];
+                let i = index
+              "
+              (click)="sizeSelector(size)"
+              [ngStyle]="{
+                backgroundColor:
+                  selectedSize === size ? 'rgb(7, 66, 117)' : 'grey'
+              }"
+              >{{ size }}</span
+            >
+          </div>
+        </div>
+        <br />
+        <div class="layover-container-colors">
+          <p style="font-weight: 1000; font-size: 16px">COLOR SWATCHES</p>
+          <div class="layover-container-colors--c">
+            <img
+              class="color-swatch"
+              *ngFor="
+                let color of jsonParser(resultItem.raw['cat_colors_info']);
+                let i = index
+              "
+              (click)="colorSelector(color)"
+              [ngStyle]="{
+                backgroundColor:
+                  selectedColorInfo.swatch === color.swatch && 'rgb(7, 66, 117)'
+              }"
+              src="{{ color.swatch }}"
+              height="35"
+              width="35"
+              alt="color-swatch"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="layover-container-btn" (click)="addToCart(resultItem)">
+          ADD TO CART
+        </button>
+      </div>
+    </section>
   </div>
 </div>

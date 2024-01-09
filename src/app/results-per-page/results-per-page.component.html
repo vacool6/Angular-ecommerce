@@ -1,0 +1,7 @@
+<!-- Dropdown for selecting results per page -->
+<label for="resultsPerPage">Results per page:</label>
+<select id="resultsPerPage" [(ngModel)]="resultsPerPage.state.numberOfResults" (change)="setResultsPerPage($event)">
+    <option *ngFor="let option of [10, 25, 50, 100]" [value]="option">
+        {{ option }}
+    </option>
+</select>
