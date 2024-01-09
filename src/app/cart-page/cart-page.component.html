@@ -18,8 +18,14 @@
           <div class="cart-info-i2">
             <p>{{ item.name }}</p>
             <p>₹ {{ item.price }}</p>
-            <p>Color: red</p>
-            <p>Size : 7</p>
+            <p>Color: {{ item.colorInfo.label }} / {{ item.colorInfo.code }}</p>
+            <img
+              src="{{ item.colorInfo.swatch }}"
+              height="35"
+              width="35"
+              alt="color-swatch"
+            />
+            <p>Size : {{ item.size }}</p>
           </div>
         </div>
       </td>
