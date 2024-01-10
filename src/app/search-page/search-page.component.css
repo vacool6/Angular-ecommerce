@@ -5,17 +5,31 @@
 }
 .facet-list-container {
   padding: 10px;
-  border: 1px solid black;
 }
 .results-and-pager-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .results-container {
-  margin-left: 5px;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 0 1rem;
 }
+
+app-result-list {
+  display: flex !important;
+  justify-content: space-between;
+}
+
 .pager-container {
   align-self: flex-end;
+}
+.facet-list-container {
+  width: 32%;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
 }

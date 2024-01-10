@@ -1,6 +1,4 @@
-<p>You searched for : {{ searchedFor }}</p>
-
-<p *ngIf="isLoading">LOADING........</p>
+<p *ngIf="isLoading" class="loading">LOADING</p>
 
 <section *ngIf="!isLoading" class="main-container">
   <div class="facet-list-container">
