@@ -22,6 +22,8 @@ headlessEngine.dispatch(
     'ec_category',
     'cat_color_swatch',
     'cat_colors_info',
+    'ec_price_whsl_dict',
+    'ec_product_id',
   ])
 );
 // search

@@ -8,11 +8,3 @@ export const headlessEngine = buildSearchEngine({
     accessToken: ACCESS_TOKEN,
   },
 });
-
-const onStateUpdate = () => {
-  const state = headlessEngine.state;
-};
-
-const unsubscribe = headlessEngine.subscribe(onStateUpdate);
-
-unsubscribe();

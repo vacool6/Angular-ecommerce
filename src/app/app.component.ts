@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, HostListener, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
@@ -40,6 +40,12 @@ export class AppComponent {
       searchBox.submit();
     } else {
       return;
+    }
+  }
+
+  onEnter(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onSearch();
     }
   }
 
