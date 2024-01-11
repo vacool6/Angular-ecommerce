@@ -73,7 +73,7 @@ export class ResultListComponent {
     // Add to cart analytics
     customEventAnalytics('click', 'addToCart', {
       pa: 'add',
-      category: 'undefined',
+      category: item.raw['ec_category'][2],
       id: item.raw['ec_product_id'],
       quantity: 1,
     });
