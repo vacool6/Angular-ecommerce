@@ -37,7 +37,7 @@
     <section class="layover-container">
       <div>
         <div class="layover-container-sizes">
-          <p style="font-weight: 1000; font-size: 16px">SIZES</p>
+          <p style="font-weight: 1000">SIZES</p>
           <div class="layover-container-sizes--s">
             <span
               *ngFor="
@@ -55,7 +55,7 @@
         </div>
         <br />
         <div class="layover-container-colors">
-          <p style="font-weight: 1000; font-size: 16px">COLOR SWATCHES</p>
+          <p style="font-weight: 1000">COLOR SWATCHES</p>
           <div class="layover-container-colors--c">
             <img
               class="color-swatch"
@@ -74,6 +74,13 @@
               alt="color-swatch"
             />
           </div>
+        </div>
+
+        <div>
+          <P style="font-weight: 1000"
+            >₹
+            {{ usPriceExtractor(resultItem.raw["ec_price_whsl_dict"]) * 82 }}</P
+          >
         </div>
       </div>
       <div>

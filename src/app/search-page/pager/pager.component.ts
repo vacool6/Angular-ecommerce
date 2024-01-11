@@ -1,8 +1,11 @@
 import { Component, HostListener } from '@angular/core';
+
 import {
   headlessPager,
   headlessResultsPerPage,
+  headlessResultList,
 } from 'src/app/coveo/controllers';
+import { SearchResultService } from 'src/app/services/searchResults.service';
 
 @Component({
   selector: 'app-pager',
@@ -13,8 +16,11 @@ export class PagerComponent {
   headless_pager: any = headlessPager.state;
   headless_results_per_page: any = headlessResultsPerPage.state;
   results_per_page_value: string = `${headlessResultsPerPage.state.numberOfResults}`;
+  stopScroll: boolean =
+    headlessResultList.state.results.length ===
+    this.searchResultService.prevResults;
 
-  constructor() {}
+  constructor(private searchResultService: SearchResultService) {}
 
   paginationHandler(type: string) {
     if (type === 'next') headlessPager.nextPage();
@@ -41,11 +47,15 @@ export class PagerComponent {
 
     const isAtBottom = scrollPosition > scrollHeight - windowHeight - 10;
 
-    if (isAtBottom) {
+    if (isAtBottom && !this.stopScroll) {
       const availableResults =
         headlessResultsPerPage.state.numberOfResults + 10;
+
       headlessResultsPerPage.set(availableResults);
       this.results_per_page_value = `${availableResults}`;
+      this.searchResultService.setPrevResults(
+        headlessResultList.state.results.length
+      );
     }
   }
 }

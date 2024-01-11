@@ -36,6 +36,7 @@ import { FacetListComponent } from './search-page/facet-list/facet-list.componen
 
 // for pagination
 import { ResultsPerPageComponent } from './results-per-page/results-per-page.component';
+import { SearchResultService } from './services/searchResults.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,13 @@ import { ResultsPerPageComponent } from './results-per-page/results-per-page.com
     ResultsPerPageComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
-  providers: [ProductsService, AuthService, CartService, ApiService],
+  providers: [
+    ProductsService,
+    AuthService,
+    CartService,
+    ApiService,
+    SearchResultService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
