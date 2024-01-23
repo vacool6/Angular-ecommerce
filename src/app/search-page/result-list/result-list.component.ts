@@ -12,6 +12,7 @@ export class ResultListComponent {
   results: any[] = [];
   selectedSize: string = '';
   selectedColorInfo: any = {};
+  cartFromDB: any;
 
   resetData() {
     this.selectedSize = '';
@@ -63,10 +64,17 @@ export class ResultListComponent {
       price: this.usPriceExtractor(item.raw['ec_price_whsl_dict'])! * 82,
     };
 
-    this.cartService.addItemToCart(data);
+    const cartAsString = JSON.stringify(data).replace(/"/g, "'");
 
-    this.selectedSize = '';
-    this.selectedColorInfo = {};
+    const postData = JSON.stringify({
+      coveo_name: 'Testing@gmail.com',
+      coveo_cartinfo: `${cartAsString}`,
+    });
+
+    this.cartService.addItemToCart(postData).subscribe((response) => {
+      console.log(response);
+      location.reload();
+    });
 
     alert('Item added to cart');
 

@@ -15,6 +15,7 @@ export class AppComponent {
   searchValue = '';
   isLoginModalOpen: boolean = false;
   cartLength: number = 0;
+  cartFromDB: any;
 
   constructor(
     private readonly router: Router,
@@ -25,7 +26,24 @@ export class AppComponent {
 
   ngDoCheck(): void {
     this.isLoginModalOpen = this.authService.isLoginModalOpen;
-    this.cartLength = this.cartService.cartItems.length;
+    this.cartLength = this.cartService.cartLength;
+  }
+
+  ngOnInit(): void {
+    this.cartService.getCartItems().subscribe((data) => {
+      this.cartFromDB = data;
+
+      for (let item of this.cartFromDB.value) {
+        const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
+
+        const parsedObject = JSON.parse(correctedString);
+        parsedObject.id = item['coveo_commercecartid'];
+        this.cartService.cartItems.push(parsedObject);
+      }
+
+      console.log(this.cartService.cartItems);
+      this.cartService.cartLength = this.cartService.cartItems.length;
+    });
   }
 
   onSearch() {

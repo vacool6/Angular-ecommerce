@@ -8,12 +8,12 @@ import { CartService } from '../services/cart.service';
 })
 export class CartPageComponent {
   cartItems: any[] = [];
+
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-
     this.cartItems = this.cartService.cartItems;
   }
 

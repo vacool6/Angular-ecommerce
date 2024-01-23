@@ -9,18 +9,21 @@ import { CartService } from 'src/app/services/cart.service';
 export class QuantitySwitchComponent {
   @Input() id: string = '';
   @Input() quantity: string = '';
+  @Input() item: any;
 
   constructor(private cartService: CartService) {}
 
   increaseQty() {
-    return this.cartService.increaseQuantity(this.id);
+    return this.cartService.quantityChanger(this.item, 'INCREASE').subscribe();
   }
 
   decreaseQty() {
-    return this.cartService.decreaseQuantity(this.id);
+    return this.cartService.quantityChanger(this.item, 'DECREASE').subscribe();
   }
 
   removeItem() {
-    return this.cartService.removeItemToCart(this.id);
+    this.cartService
+      .removeItemToCart(this.id)
+      .subscribe(() => location.reload());
   }
 }

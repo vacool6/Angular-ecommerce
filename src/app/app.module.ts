@@ -15,7 +15,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProductsService } from './services/products.service';
 import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
-import { ApiService } from './services/api.service';
 
 // Components
 import { HomePageComponent } from './home-page/home-page.component';
@@ -60,13 +59,7 @@ import { SearchResultService } from './services/searchResults.service';
     ResultsPerPageComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
-  providers: [
-    ProductsService,
-    AuthService,
-    CartService,
-    ApiService,
-    SearchResultService,
-  ],
+  providers: [ProductsService, AuthService, CartService, SearchResultService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
