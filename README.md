@@ -11,3 +11,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Reference Video
+
+https://github.com/vacool6/Angular-ecommerce/assets/42382545/3b1f2e60-06b2-4543-8701-783899302e5d
+
+
