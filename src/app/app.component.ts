@@ -30,20 +30,29 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe((data) => {
-      this.cartFromDB = data;
+    const getCart = () => {
+      return this.cartService
+        .getCartItems({
+          'Content-Type': 'application/json',
+          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+        })
+        .subscribe((data) => {
+          this.cartFromDB = data;
 
-      for (let item of this.cartFromDB.value) {
-        const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
+          for (let item of this.cartFromDB.value) {
+            const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
 
-        const parsedObject = JSON.parse(correctedString);
-        parsedObject.id = item['coveo_commercecartid'];
-        this.cartService.cartItems.push(parsedObject);
-      }
+            const parsedObject = JSON.parse(correctedString);
+            parsedObject.id = item['coveo_commercecartid'];
+            this.cartService.cartItems.push(parsedObject);
+          }
 
-      console.log(this.cartService.cartItems);
-      this.cartService.cartLength = this.cartService.cartItems.length;
-    });
+          // console.log(this.cartService.cartItems);
+          this.cartService.cartLength = this.cartService.cartItems.length;
+        });
+    };
+
+    this.cartService.safeApiCall(getCart);
   }
 
   onSearch() {

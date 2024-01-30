@@ -71,10 +71,19 @@ export class ResultListComponent {
       coveo_cartinfo: `${cartAsString}`,
     });
 
-    this.cartService.addItemToCart(postData).subscribe((response) => {
-      console.log(response);
-      location.reload();
-    });
+    const addToCart = () => {
+      return this.cartService
+        .addItemToCart(postData, {
+          'Content-Type': 'application/json',
+          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+        })
+        .subscribe((response) => {
+          console.log(response);
+          location.reload();
+        });
+    };
+
+    this.cartService.safeApiCall(addToCart);
 
     alert('Item added to cart');
 

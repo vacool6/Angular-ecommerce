@@ -14,16 +14,41 @@ export class QuantitySwitchComponent {
   constructor(private cartService: CartService) {}
 
   increaseQty() {
-    return this.cartService.quantityChanger(this.item, 'INCREASE').subscribe();
+    const plus = () => {
+      return this.cartService
+        .quantityChanger(this.item, 'INCREASE', {
+          'Content-Type': 'application/json',
+          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+        })
+        .subscribe();
+    };
+
+    this.cartService.safeApiCall(plus);
   }
 
   decreaseQty() {
-    return this.cartService.quantityChanger(this.item, 'DECREASE').subscribe();
+    const minus = () => {
+      return this.cartService
+        .quantityChanger(this.item, 'DECREASE', {
+          'Content-Type': 'application/json',
+          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+        })
+        .subscribe();
+    };
+
+    this.cartService.safeApiCall(minus);
   }
 
   removeItem() {
-    this.cartService
-      .removeItemToCart(this.id)
-      .subscribe(() => location.reload());
+    const removeCartItem = () => {
+      return this.cartService
+        .removeItemToCart(this.id, {
+          'Content-Type': 'application/json',
+          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+        })
+        .subscribe(() => location.reload());
+    };
+
+    this.cartService.safeApiCall(removeCartItem);
   }
 }
