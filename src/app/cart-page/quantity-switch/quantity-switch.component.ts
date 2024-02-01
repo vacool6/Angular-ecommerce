@@ -18,7 +18,11 @@ export class QuantitySwitchComponent {
       return this.cartService
         .quantityChanger(this.item, 'INCREASE', {
           'Content-Type': 'application/json',
-          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+          Authorization: JSON.parse(
+            this.cartService.decodeFromBase64(
+              localStorage.getItem('JWT') as string
+            )
+          ),
         })
         .subscribe();
     };
@@ -28,10 +32,18 @@ export class QuantitySwitchComponent {
 
   decreaseQty() {
     const minus = () => {
+      if (this.item.quantity <= 1) {
+        return alert('Quantity cannot be less that 1');
+      }
+
       return this.cartService
         .quantityChanger(this.item, 'DECREASE', {
           'Content-Type': 'application/json',
-          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+          Authorization: JSON.parse(
+            this.cartService.decodeFromBase64(
+              localStorage.getItem('JWT') as string
+            )
+          ),
         })
         .subscribe();
     };
@@ -44,7 +56,11 @@ export class QuantitySwitchComponent {
       return this.cartService
         .removeItemToCart(this.id, {
           'Content-Type': 'application/json',
-          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+          Authorization: JSON.parse(
+            this.cartService.decodeFromBase64(
+              localStorage.getItem('JWT') as string
+            )
+          ),
         })
         .subscribe(() => location.reload());
     };

@@ -34,7 +34,11 @@ export class AppComponent {
       return this.cartService
         .getCartItems({
           'Content-Type': 'application/json',
-          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+          Authorization: JSON.parse(
+            this.cartService.decodeFromBase64(
+              localStorage.getItem('JWT') as string
+            )
+          ),
         })
         .subscribe((data) => {
           this.cartFromDB = data;

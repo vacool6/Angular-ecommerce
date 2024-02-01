@@ -15,10 +15,18 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
+  // Token functions
+  decodeFromBase64(encodedInput: string): string {
+    return atob(JSON.parse(encodedInput));
+  }
+
   hasTokenExpired(token: string) {
-    if (!localStorage.getItem('JWT')) {
-      return true;
-    }
+    if (!token) return true;
+
+    const parts = token.split('.');
+
+    if (parts.length !== 3) return true;
+
     const expiry = JSON.parse(atob(token.split('.')[1])).exp;
     return Math.floor(new Date().getTime() / 1000) >= expiry;
   }
@@ -26,6 +34,8 @@ export class CartService {
   genToken() {
     return this.http.get(this.tokenURL, { headers: {} });
   }
+
+  // Cart functions
 
   getCartItems(headers: any) {
     return this.http.get(
@@ -79,10 +89,15 @@ export class CartService {
   }
 
   safeApiCall(func: () => void): void {
-    if (this.hasTokenExpired(`${localStorage.getItem('JWT')}`)) {
+    const token = `${this.decodeFromBase64(
+      localStorage.getItem('JWT') as string
+    )}`;
+
+    if (this.hasTokenExpired(token)) {
       this.genToken().subscribe((JWT) => {
         this.jwtToken = JWT;
-        localStorage.setItem('JWT', this.jwtToken.token);
+        // document.cookie = `jwt=${this.jwtToken.token}; HttpOnly; Secure; SameSite=Strict`;
+        localStorage.setItem('JWT', JSON.stringify(this.jwtToken.token));
         func();
       });
     } else {

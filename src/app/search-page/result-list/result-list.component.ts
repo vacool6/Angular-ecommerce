@@ -75,7 +75,11 @@ export class ResultListComponent {
       return this.cartService
         .addItemToCart(postData, {
           'Content-Type': 'application/json',
-          Authorization: JSON.parse(localStorage.getItem('JWT') as string),
+          Authorization: JSON.parse(
+            this.cartService.decodeFromBase64(
+              localStorage.getItem('JWT') as string
+            )
+          ),
         })
         .subscribe((response) => {
           console.log(response);
