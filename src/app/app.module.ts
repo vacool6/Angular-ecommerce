@@ -15,6 +15,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProductsService } from './services/products.service';
 import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
+import { SearchResultService } from './services/searchResults.service';
+import { SpinnerService } from './services/spinner.service';
 
 // Components
 import { HomePageComponent } from './home-page/home-page.component';
@@ -35,7 +37,8 @@ import { FacetListComponent } from './search-page/facet-list/facet-list.componen
 
 // for pagination
 import { ResultsPerPageComponent } from './results-per-page/results-per-page.component';
-import { SearchResultService } from './services/searchResults.service';
+
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +60,16 @@ import { SearchResultService } from './services/searchResults.service';
     PagerComponent,
     FacetListComponent,
     ResultsPerPageComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
-  providers: [ProductsService, AuthService, CartService, SearchResultService],
+  providers: [
+    ProductsService,
+    AuthService,
+    CartService,
+    SearchResultService,
+    SpinnerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { headlessResultList } from '../../coveo/controllers';
 import { CartService } from 'src/app/services/cart.service';
 import { customEventAnalytics } from 'src/app/coveo/analytics';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-result-list',
@@ -20,7 +21,10 @@ export class ResultListComponent {
     this.selectedColorInfo = {};
   }
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private spinnerService: SpinnerService
+  ) {}
 
   ngDoCheck() {
     this.results = headlessResultList.state.results;
@@ -55,6 +59,8 @@ export class ResultListComponent {
     )
       return alert('Select a color');
 
+    this.spinnerService.triggerSpinner();
+
     const data = {
       id: Math.random(),
       title: item.title,
@@ -81,7 +87,7 @@ export class ResultListComponent {
           this.cartService.cartItems.push(parsedObject);
         }
 
-        alert(this.subscribeResponse.message);
+        this.spinnerService.stopSpinner(this.subscribeResponse.message);
       });
 
     // Add to cart analytics

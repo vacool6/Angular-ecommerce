@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-quantity-switch',
@@ -15,31 +16,37 @@ export class QuantitySwitchComponent {
   responseForIncrement: any = {};
   responseForDecrement: any = {};
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private spinnerService: SpinnerService
+  ) {}
 
   increaseQty() {
+    this.spinnerService.triggerSpinner();
     this.cartService
       .quantityChanger(this.item, this.id, 'INCREASE')
       .subscribe((response) => {
         this.responseForIncrement = response;
-        alert(this.responseForIncrement.message);
+        this.spinnerService.stopSpinner(this.responseForIncrement.message);
       });
   }
 
   decreaseQty() {
     if (this.item.quantity <= 1) return alert('Quantity cannot be less that 1');
+    this.spinnerService.triggerSpinner();
     this.cartService
       .quantityChanger(this.item, this.id, 'DECREASE')
       .subscribe((response) => {
         this.responseForDecrement = response;
-        alert(this.responseForDecrement.message);
+        this.spinnerService.stopSpinner(this.responseForDecrement.message);
       });
   }
 
   removeItem() {
+    this.spinnerService.triggerSpinner();
     this.cartService.removeItemToCart(this.id).subscribe((response) => {
       this.responseForRemove = response;
-      alert(this.responseForRemove.message);
+      this.spinnerService.stopSpinner();
       location.reload();
     });
   }

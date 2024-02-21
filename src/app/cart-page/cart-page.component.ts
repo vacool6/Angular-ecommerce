@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { SpinnerService } from '../services/spinner.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -8,8 +9,16 @@ import { CartService } from '../services/cart.service';
 })
 export class CartPageComponent {
   cartItems: any[] = [];
+  isSpinning: boolean = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private spinnerService: SpinnerService
+  ) {}
+
+  ngDoCheck() {
+    this.isSpinning = this.spinnerService.isSpinning;
+  }
 
   ngOnInit(): void {
     document.body.scrollTop = 0;

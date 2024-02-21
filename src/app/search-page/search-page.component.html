@@ -1,6 +1,12 @@
 <p *ngIf="isLoading" class="loading">LOADING</p>
 
 <section *ngIf="!isLoading" class="main-container">
+  <section [ngClass]="{ spinner: isSpinning }">
+    <section [ngStyle]="{ display: isSpinning ? 'block' : 'none' }">
+      <app-spinner></app-spinner>
+    </section>
+  </section>
+
   <div class="facet-list-container">
     <app-facet-list></app-facet-list>
   </div>
