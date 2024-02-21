@@ -16,9 +16,6 @@ export class PagerComponent {
   headless_pager: any = headlessPager.state;
   headless_results_per_page: any = headlessResultsPerPage.state;
   results_per_page_value: string = `${headlessResultsPerPage.state.numberOfResults}`;
-  stopScroll: boolean =
-    headlessResultList.state.results.length ===
-    this.searchResultService.prevResults;
 
   constructor(private searchResultService: SearchResultService) {}
 
@@ -47,7 +44,7 @@ export class PagerComponent {
 
     const isAtBottom = scrollPosition > scrollHeight - windowHeight - 10;
 
-    if (isAtBottom && !this.stopScroll) {
+    if (isAtBottom) {
       const availableResults =
         headlessResultsPerPage.state.numberOfResults + 10;
 

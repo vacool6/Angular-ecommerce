@@ -47,15 +47,13 @@ export class AppComponent {
   }
 
   onSearch() {
-    if (this.searchValue !== localStorage.getItem('prevValue')) {
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-      headlessResultsPerPage.set(10);
-      this.searchResultService.setPrevResults(0);
-    }
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    headlessResultsPerPage.set(10);
+    this.searchResultService.setPrevResults(0);
 
     searchBox.subscribe(() => {
       searchBox.state;
@@ -66,7 +64,6 @@ export class AppComponent {
     });
 
     searchBox.updateText(this.searchValue);
-    localStorage.setItem('prevValue', this.searchValue);
     searchBox.submit();
   }
 
