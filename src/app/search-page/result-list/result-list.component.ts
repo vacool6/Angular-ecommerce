@@ -13,6 +13,7 @@ export class ResultListComponent {
   selectedSize: string = '';
   selectedColorInfo: any = {};
   cartFromDB: any;
+  subscribeResponse: any = {};
 
   resetData() {
     this.selectedSize = '';
@@ -66,30 +67,22 @@ export class ResultListComponent {
 
     const cartAsString = JSON.stringify(data).replace(/"/g, "'");
 
-    const postData = JSON.stringify({
-      coveo_name: 'Testing@gmail.com',
-      coveo_cartinfo: `${cartAsString}`,
-    });
+    this.cartService
+      .addItemToCart('Testing@gmail.com', `[${cartAsString}]`)
+      .subscribe((response) => {
+        this.subscribeResponse = response;
+        this.cartService.cartLength = this.subscribeResponse.cartLength;
 
-    const addToCart = () => {
-      return this.cartService
-        .addItemToCart(postData, {
-          'Content-Type': 'application/json',
-          Authorization: JSON.parse(
-            this.cartService.decodeFromBase64(
-              localStorage.getItem('JWT') as string
-            )
-          ),
-        })
-        .subscribe((response) => {
-          console.log(response);
-          location.reload();
-        });
-    };
+        this.cartService.cartItems = [];
+        for (let item of this.subscribeResponse.data) {
+          const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
+          const parsedObject = JSON.parse(correctedString)[0];
+          parsedObject.id = item['coveo_commercecartid'];
+          this.cartService.cartItems.push(parsedObject);
+        }
 
-    this.cartService.safeApiCall(addToCart);
-
-    alert('Item added to cart');
+        alert(this.subscribeResponse.message);
+      });
 
     // Add to cart analytics
     customEventAnalytics('click', 'addToCart', {

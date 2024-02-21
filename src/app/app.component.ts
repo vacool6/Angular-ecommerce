@@ -14,6 +14,7 @@ export class AppComponent {
   title = 'levis_POC';
   searchValue = '';
   isLoginModalOpen: boolean = false;
+
   cartLength: number = 0;
   cartFromDB: any;
 
@@ -30,33 +31,19 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    const getCart = () => {
-      return this.cartService
-        .getCartItems({
-          'Content-Type': 'application/json',
-          Authorization: JSON.parse(
-            this.cartService.decodeFromBase64(
-              localStorage.getItem('JWT') as string
-            )
-          ),
-        })
-        .subscribe((data) => {
-          this.cartFromDB = data;
+    this.cartService.getCartItems().subscribe((data) => {
+      this.cartFromDB = data;
 
-          for (let item of this.cartFromDB.value) {
-            const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
+      this.cartService.cartLength = this.cartFromDB.cartLength;
 
-            const parsedObject = JSON.parse(correctedString);
-            parsedObject.id = item['coveo_commercecartid'];
-            this.cartService.cartItems.push(parsedObject);
-          }
+      for (let item of this.cartFromDB.data) {
+        const correctedString = item['coveo_cartinfo'].replace(/'/g, '"');
+        const parsedObject = JSON.parse(correctedString)[0];
+        parsedObject.id = item['coveo_commercecartid'];
 
-          // console.log(this.cartService.cartItems);
-          this.cartService.cartLength = this.cartService.cartItems.length;
-        });
-    };
-
-    this.cartService.safeApiCall(getCart);
+        this.cartService.cartItems.push(parsedObject);
+      }
+    });
   }
 
   onSearch() {

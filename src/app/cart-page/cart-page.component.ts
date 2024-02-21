@@ -15,6 +15,7 @@ export class CartPageComponent {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.cartItems = this.cartService.cartItems;
+    console.log(this.cartService);
   }
 
   getSubtotal() {

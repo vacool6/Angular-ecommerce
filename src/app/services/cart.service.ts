@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BASE_URL, TOKEN_URL } from '../env';
+import { BASE_URL } from '../env';
 
 @Injectable()
 export class CartService {
   baseURL = BASE_URL;
-  tokenURL = TOKEN_URL;
 
   cartLength: number = 0;
   cartItems: any[] = [];
@@ -15,50 +14,28 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  // Token functions
-  decodeFromBase64(encodedInput: string): string {
-    return atob(JSON.parse(encodedInput));
-  }
-
-  hasTokenExpired(token: string) {
-    if (!token) return true;
-
-    const parts = token.split('.');
-
-    if (parts.length !== 3) return true;
-
-    const expiry = JSON.parse(atob(token.split('.')[1])).exp;
-    return Math.floor(new Date().getTime() / 1000) >= expiry;
-  }
-
-  genToken() {
-    return this.http.get(this.tokenURL, { headers: {} });
-  }
-
   // Cart functions
-
-  getCartItems(headers: any) {
-    return this.http.get(
-      this.baseURL + 'coveo_commercecarts?$select=coveo_name,coveo_cartinfo',
-      {
-        headers,
-      }
-    );
+  getCartItems() {
+    return this.http.get(this.baseURL + 'get-cart');
   }
 
-  addItemToCart(postData: any, headers: any) {
-    return this.http.post(this.baseURL + 'coveo_commercecarts', postData, {
-      headers,
+  addItemToCart(cartName: any, cartInfo: any) {
+    const postData = JSON.stringify({
+      coveo_name: cartName,
+      coveo_cartinfo: cartInfo,
+    });
+
+    return this.http.post(this.baseURL + 'add-to-cart', postData, {
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  removeItemToCart(id: string, headers: any) {
-    return this.http.delete(this.baseURL + `coveo_commercecarts(${id})`, {
-      headers,
-    });
+  removeItemToCart(id: string) {
+    console.log(id);
+    return this.http.delete(this.baseURL + `delete-from-cart/${id}`);
   }
 
-  quantityChanger(data: any, type: string, headers: any) {
+  quantityChanger(data: any, id: string, type: string) {
     if (type === 'INCREASE') {
       data.quantity = data.quantity + 1;
     } else if (type === 'DECREASE') {
@@ -69,13 +46,9 @@ export class CartService {
       value: JSON.stringify(data).replace(/"/g, "'"),
     });
 
-    return this.http.put(
-      this.baseURL + `coveo_commercecarts(${data.id})/coveo_cartinfo`,
-      updatedQty,
-      {
-        headers,
-      }
-    );
+    return this.http.put(this.baseURL + `change-quantity/${id}`, updatedQty, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   subtotal() {
@@ -86,22 +59,5 @@ export class CartService {
     }
 
     return total;
-  }
-
-  safeApiCall(func: () => void): void {
-    const token = `${this.decodeFromBase64(
-      localStorage.getItem('JWT') as string
-    )}`;
-
-    if (this.hasTokenExpired(token)) {
-      this.genToken().subscribe((JWT) => {
-        this.jwtToken = JWT;
-        // document.cookie = `jwt=${this.jwtToken.token}; HttpOnly; Secure; SameSite=Strict`;
-        localStorage.setItem('JWT', JSON.stringify(this.jwtToken.token));
-        func();
-      });
-    } else {
-      func();
-    }
   }
 }

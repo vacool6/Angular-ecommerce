@@ -11,60 +11,36 @@ export class QuantitySwitchComponent {
   @Input() quantity: string = '';
   @Input() item: any;
 
+  responseForRemove: any = {};
+  responseForIncrement: any = {};
+  responseForDecrement: any = {};
+
   constructor(private cartService: CartService) {}
 
   increaseQty() {
-    const plus = () => {
-      return this.cartService
-        .quantityChanger(this.item, 'INCREASE', {
-          'Content-Type': 'application/json',
-          Authorization: JSON.parse(
-            this.cartService.decodeFromBase64(
-              localStorage.getItem('JWT') as string
-            )
-          ),
-        })
-        .subscribe();
-    };
-
-    this.cartService.safeApiCall(plus);
+    this.cartService
+      .quantityChanger(this.item, this.id, 'INCREASE')
+      .subscribe((response) => {
+        this.responseForIncrement = response;
+        alert(this.responseForIncrement.message);
+      });
   }
 
   decreaseQty() {
-    const minus = () => {
-      if (this.item.quantity <= 1) {
-        return alert('Quantity cannot be less that 1');
-      }
-
-      return this.cartService
-        .quantityChanger(this.item, 'DECREASE', {
-          'Content-Type': 'application/json',
-          Authorization: JSON.parse(
-            this.cartService.decodeFromBase64(
-              localStorage.getItem('JWT') as string
-            )
-          ),
-        })
-        .subscribe();
-    };
-
-    this.cartService.safeApiCall(minus);
+    if (this.item.quantity <= 1) return alert('Quantity cannot be less that 1');
+    this.cartService
+      .quantityChanger(this.item, this.id, 'DECREASE')
+      .subscribe((response) => {
+        this.responseForDecrement = response;
+        alert(this.responseForDecrement.message);
+      });
   }
 
   removeItem() {
-    const removeCartItem = () => {
-      return this.cartService
-        .removeItemToCart(this.id, {
-          'Content-Type': 'application/json',
-          Authorization: JSON.parse(
-            this.cartService.decodeFromBase64(
-              localStorage.getItem('JWT') as string
-            )
-          ),
-        })
-        .subscribe(() => location.reload());
-    };
-
-    this.cartService.safeApiCall(removeCartItem);
+    this.cartService.removeItemToCart(this.id).subscribe((response) => {
+      this.responseForRemove = response;
+      alert(this.responseForRemove.message);
+      location.reload();
+    });
   }
 }
