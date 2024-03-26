@@ -1,17 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { BASE_URL } from '../env';
 
 @Injectable()
 export class CartService {
   baseURL = BASE_URL;
-
   cartLength: number = 0;
   cartItems: any[] = [];
-
   jwtToken: any = '';
-
   constructor(private http: HttpClient) {}
 
   // Cart functions

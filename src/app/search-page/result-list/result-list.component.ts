@@ -97,6 +97,15 @@ export class ResultListComponent {
       id: item.raw['ec_product_id'],
       quantity: 1,
     });
+      price: 1000,
+    };
+
+    this.cartService.addItemToCart(data);
+
+    this.selectedSize = '';
+    this.selectedColorInfo = {};
+
+    alert('Item added to cart');
   }
 
   mouseLeaveEvent() {
