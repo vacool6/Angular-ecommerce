@@ -17,6 +17,7 @@
         <input
           placeholder="Tell us what's on your mind"
           [(ngModel)]="searchValue"
+          (keyup)="onEnter($event)"
         />
         <button (click)="onSearch()">Search</button>
         <a routerLink="/cart" class="cart-link">

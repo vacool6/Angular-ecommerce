@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
 import { searchBox } from '../coveo/controllers';
+import { SpinnerService } from '../services/spinner.service';
 
 @Component({
   selector: 'app-search-page',
@@ -11,8 +12,17 @@ import { searchBox } from '../coveo/controllers';
 export class SearchPageComponent {
   searchedFor = '';
   isLoading: boolean = true;
+  isSpinning: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private spinnerService: SpinnerService
+  ) {}
+
+  ngDoCheck() {
+    this.isLoading = searchBox.state.isLoading;
+    this.isSpinning = this.spinnerService.isSpinning;
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -22,10 +32,6 @@ export class SearchPageComponent {
     searchBox.updateText(this.searchedFor);
     searchBox.submit();
 
-    this.isLoading = searchBox.state.isLoading;
-  }
-
-  ngDoCheck() {
     this.isLoading = searchBox.state.isLoading;
   }
 }

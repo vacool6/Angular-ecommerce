@@ -15,7 +15,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProductsService } from './services/products.service';
 import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
-import { ApiService } from './services/api.service';
+import { SearchResultService } from './services/searchResults.service';
+import { SpinnerService } from './services/spinner.service';
 
 // Components
 import { HomePageComponent } from './home-page/home-page.component';
@@ -35,7 +36,10 @@ import { PagerComponent } from './search-page/pager/pager.component';
 import { FacetListComponent } from './search-page/facet-list/facet-list.component';
 
 // for pagination
-import { ResultsPerPageComponent } from './results-per-page/results-per-page.component';
+import { ResultsPerPageComponent } from './results-per-page/results-per-page.component'
+
+import { SpinnerComponent } from './spinner/spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -57,9 +61,17 @@ import { ResultsPerPageComponent } from './results-per-page/results-per-page.com
     PagerComponent,
     FacetListComponent,
     ResultsPerPageComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRouter, FormsModule, HttpClientModule],
-  providers: [ProductsService, AuthService, CartService, ApiService],
+  providers: [
+    ProductsService,
+    AuthService,
+    CartService,
+    SearchResultService,
+    SpinnerService,
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

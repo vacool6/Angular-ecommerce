@@ -1,3 +1,9 @@
+<section [ngClass]="{ spinner: isSpinning }">
+  <section [ngStyle]="{ display: isSpinning ? 'block' : 'none' }">
+    <app-spinner></app-spinner>
+  </section>
+</section>
+
 <section class="cart-container">
   <h1>YOUR CART</h1>
 
@@ -33,6 +39,7 @@
         <app-quantity-switch
           [id]="item.id"
           [quantity]="item.quantity"
+          [item]="item"
         ></app-quantity-switch>
       </td>
       <td class="cart-total">₹ {{ item.quantity * item.price }}</td>

@@ -1,52 +1,50 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BASE_URL } from '../env';
 
 @Injectable()
 export class CartService {
-  cartItems: any[] = localStorage.getItem('cart-items')
-    ? JSON.parse(localStorage.getItem('cart-items') as any)
-    : [];
+  baseURL = BASE_URL;
+  cartLength: number = 0;
+  cartItems: any[] = [];
+  jwtToken: any = '';
+  constructor(private http: HttpClient) {}
 
-  addItemToCart(item: any) {
-    this.cartItems.push(item);
-    localStorage.setItem('cart-items', JSON.stringify(this.cartItems));
+  // Cart functions
+  getCartItems() {
+    return this.http.get(this.baseURL + 'get-cart');
+  }
+
+  addItemToCart(cartName: any, cartInfo: any) {
+    const postData = JSON.stringify({
+      coveo_name: cartName,
+      coveo_cartinfo: cartInfo,
+    });
+
+    return this.http.post(this.baseURL + 'add-to-cart', postData, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   removeItemToCart(id: string) {
-    const updatedCart = this.cartItems.filter((e: any) => {
-      return e.id !== id;
-    });
-    localStorage.setItem('cart-items', JSON.stringify(updatedCart));
-    location.reload();
+    console.log(id);
+    return this.http.delete(this.baseURL + `delete-from-cart/${id}`);
   }
 
-  increaseQuantity(id: string) {
-    const updatedCart = this.cartItems.map((e: any) => {
-      if (e.id === id) {
-        return { ...e, quantity: e.quantity + 1 };
-      } else {
-        return e;
-      }
+  quantityChanger(data: any, id: string, type: string) {
+    if (type === 'INCREASE') {
+      data.quantity = data.quantity + 1;
+    } else if (type === 'DECREASE') {
+      data.quantity = data.quantity - 1;
+    }
+
+    const updatedQty = JSON.stringify({
+      value: JSON.stringify(data).replace(/"/g, "'"),
     });
 
-    localStorage.setItem('cart-items', JSON.stringify(updatedCart));
-    location.reload();
-  }
-
-  decreaseQuantity(id: string) {
-    const updatedCart = this.cartItems.map((e: any) => {
-      if (e.id === id) {
-        if (e.quantity > 1) {
-          return { ...e, quantity: e.quantity - 1 };
-        } else {
-          return e;
-        }
-      } else {
-        return e;
-      }
+    return this.http.put(this.baseURL + `change-quantity/${id}`, updatedQty, {
+      headers: { 'Content-Type': 'application/json' },
     });
-
-    localStorage.setItem('cart-items', JSON.stringify(updatedCart));
-    location.reload();
   }
 
   subtotal() {
